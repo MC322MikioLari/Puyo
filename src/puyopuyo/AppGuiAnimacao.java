@@ -8,9 +8,9 @@ public class AppGuiAnimacao {
    public static void main(String[] args) {
        JanelaImagem janela = new JanelaImagem();
        
-       janela.background(DIRETORIO + "borda.png");
+       //janela.background(DIRETORIO + "imagens/borda.png");
        
-       ImagemAnimada animado = new ImagemAnimada(DIRETORIO + "green.png", 0, 0, 50, 50, 0, 30);
+       ImagemAnimada animado = new ImagemAnimada(DIRETORIO + "imagens/green.png", 0, 0, 50, 50, 0, 30);
        
        janela.adicionaImagem(animado);
        
