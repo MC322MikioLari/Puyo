@@ -7,11 +7,30 @@ import java.net.URL;
 
 public class Componentes {
 	
-	private int posX, posY;
-    private int frame, nFrames;
-    
-	private Image componentes[];
+	private int posX, posY, color;
+	private String img;
 	
+    public Componentes(){
+    	this.posX = 0;
+		this.posY = 0;
+		this.color = 0;
+		this.img = "";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+	private Image componentes[];
+
 	 public Componentes(int nFrames){
 		posX = 0;
 		posY = 0;
@@ -32,4 +51,5 @@ public class Componentes {
 	public void draw(Graphics g) {
 		g.drawImage(componentes[frame], posX, posY, null);
 	}
+	*/
 }

@@ -1,22 +1,31 @@
 package puyopuyo;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class JanelaImagem extends JFrame {
    private static final long serialVersionUID = 1278136335268310294L;
    private Container painel;
-   Graphics2D board;
+   
+   final static int MAX_PUYOS = 6*12;
+   
+   final static int WIDTH = 400;
+   final static int HEIGHT = 504;
+   
+   Board board = new Board();
+   ImagemAnimada[] animado = new ImagemAnimada[2];
+   Puyo[][] p = board.createPuyos();
+   
+   int i, j;
+   
+   public static String DIRETORIO =
+	         AppPuyo.class.getResource(".").getPath();
    
    public JanelaImagem() {
       super();
@@ -25,34 +34,38 @@ public class JanelaImagem extends JFrame {
    }
     
    public void visual() {
-      setSize(350, 600);
-
+      setSize(WIDTH, HEIGHT);
+      
       painel = getContentPane();
-      painel.setLayout(new BorderLayout());
+      painel.setLayout(null);
       
-      setBackground(Color.lightGray);
+      setBackground(Color.white);
       
-      painel.add(new Board());
+      painel.add(board);
       
       setVisible(true);
    }
    
-   /*
-   public void background(String arquivoImagem) {
-	   ImageIcon imagem = new ImageIcon(arquivoImagem);
+   public ImagemAnimada[] sendPuyos(int i) {
+	   animado[0] = new ImagemAnimada(DIRETORIO + p[i][0].getImage(), 126, -50, 42, 42, 0, 60);
+	   animado[1] = new ImagemAnimada(DIRETORIO + p[i][1].getImage(), 126, -25, 42, 42, 0, 60);
+	   return animado;
+   }
+   
+   public void paintComponent(Graphics g) {
+	  super.paintComponents(g);
+	  board.paintBoard(g);
+   }
+   
+   public void adicionaImagem(ImagemAnimada img) {
+	   painel.add(img);
+	   SwingUtilities.updateComponentTreeUI(this);
+   }
+   
+   public void adicionaImagem(String img) {
+	   ImageIcon imagem = new ImageIcon(img);
 	   JLabel campoImagem = new JLabel(imagem);
 	   painel.add(campoImagem);
 	   SwingUtilities.updateComponentTreeUI(this);
-   }
-   */
-   
-   private void setOpacity(boolean b) {
-	// TODO Auto-generated method stub
-	
-}
-
-public void adicionaImagem(ImagemAnimada img) {
-      painel.add(img);
-      SwingUtilities.updateComponentTreeUI(this);
    }
 }

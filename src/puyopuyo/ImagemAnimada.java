@@ -23,7 +23,13 @@ public class ImagemAnimada extends JLabel implements ActionListener {
       this.shiftX = shiftX;
       this.shiftY = shiftY;
    }
-   
+   /*
+   public ImagemAnimada[] init (int i) {
+	   for (int n = 0; n < i; n++) {
+		   Imagem
+	   }
+   }
+   */
    public void move() {
       x += shiftX;
       y += shiftY;
