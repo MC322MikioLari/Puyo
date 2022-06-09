@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class ImagemAnimada extends JLabel implements ActionListener {
-   private static final long serialVersionUID = 4310667556938403035L;
+   //private static final long serialVersionUID = 4310667556938403035L;
 
    private int x, y,
                shiftX, shiftY;
@@ -23,13 +23,7 @@ public class ImagemAnimada extends JLabel implements ActionListener {
       this.shiftX = shiftX;
       this.shiftY = shiftY;
    }
-   /*
-   public ImagemAnimada[] init (int i) {
-	   for (int n = 0; n < i; n++) {
-		   Imagem
-	   }
-   }
-   */
+
    public void move() {
       x += shiftX;
       y += shiftY;

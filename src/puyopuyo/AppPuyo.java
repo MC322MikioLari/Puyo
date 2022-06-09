@@ -2,6 +2,7 @@ package puyopuyo;
 
 public class AppPuyo {
 	final static int MAX_PUYOS = 6*12;
+	
 	// tecnica para identificar o diretorio em que a classe esta
 	public static String DIRETORIO =
          AppPuyo.class.getResource(".").getPath();
@@ -25,6 +26,7 @@ public class AppPuyo {
        	  catch (InterruptedException e) {
  			System.out.println(e);
        	  }
+       	  System.out.println("Inseriu Puyo");
        }
    }
 }

@@ -7,7 +7,7 @@ public class Puyo extends Componentes{
 	final static int MAX_PUYOS = 6*12;
 	
 	//puyo colors
-    final static int BLUE   = 0;
+    final static int PURPLE   = 0;
     final static int RED    = 1;
     final static int YELLOW = 2;
     final static int GREEN  = 3;
