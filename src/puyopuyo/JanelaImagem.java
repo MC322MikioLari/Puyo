@@ -17,7 +17,7 @@ public class JanelaImagem extends JFrame {
 
    Maker maker = new Maker();
    ImagemAnimada[] animado = new ImagemAnimada[2];
-   Puyo[][] p = maker.makePuyos();
+   
    Board panel = new Board();
    
    int i, j;
@@ -31,18 +31,19 @@ public class JanelaImagem extends JFrame {
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       //visual();
       setLocationRelativeTo(null);
-      setBackground(Color.white);
       setVisible(true);
   
       add(panel);
       panel.setLayout(null);
+      panel.setBackground(Color.white);
    }
 
+   /*
    public ImagemAnimada[] sendPuyos(int i) {
-	   animado[0] = new ImagemAnimada(DIRETORIO + p[i][0].getImage(), 126, -50, 42, 42, 0, 60);
-	   animado[1] = new ImagemAnimada(DIRETORIO + p[i][1].getImage(), 126, -25, 42, 42, 0, 60);
+	   animado[0] = new ImagemAnimada(DIRETORIO + p[i][0].getImage(), 0, -50, 42, 42, 0, 60);
+	   animado[1] = new ImagemAnimada(DIRETORIO + p[i][1].getImage(), 0, -25, 42, 42, 0, 60);
 	   return animado;
-   }
+   }*/
    
    public void adicionaImagem(ImagemAnimada img) {
 	   panel.add(img);
