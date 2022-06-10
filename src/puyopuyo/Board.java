@@ -26,7 +26,5 @@ public class Board extends JPanel{
 			
 		String score = Integer.toString(placar.getScore());
 		g2.drawString("Score: " + score, 260, 20);
-			
-		System.out.println("Entrou");
 	}
  }

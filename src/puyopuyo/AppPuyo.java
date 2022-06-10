@@ -21,24 +21,24 @@ public class AppPuyo {
        Controle control = new Controle();
        
        for (int i = 0; i < MAX_PUYOS/2; i++) {
-    	   for (int j = 0; j < MAX_PUYOS/2; j++) {
+    	   for (int j = 0; j < 2; j++) {    		   /*
+    		   /*try (Scanner leitor = new Scanner(System.in)) {
+    	    	   String comando = leitor.next();
+    			   control.executa(comando);*/
     		   if (j == 1)
     			   p[i][j].setPosY(-25);
-	     	  ImagemAnimada animado = p[i][j].animado;
-	     	  metro.addActionListener(animado);
-	     	  janela.adicionaImagem(animado);
-	     	  metro.start();
-	       	  try {
+	     	   ImagemAnimada animado = p[i][j].getAnimado();
+	     	   metro.addActionListener(animado);
+	     	   janela.adicionaImagem(animado);
+	     	   System.out.println("Inseriu Puyo");
+	     	   metro.start();
+	       	  
+	       }
+    	   try {
 	 			Thread.sleep(7000);
 	       	  } 
 	       	  catch (InterruptedException e) {
 	 			System.out.println(e);
-	       	  }
-	       	  System.out.println("Inseriu Puyo");
-	       }
-	       try (Scanner leitor = new Scanner(System.in)) {
-	    	   String comando = leitor.next();
-			   control.executa(comando);
 	       }
        }
    }

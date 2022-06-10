@@ -6,7 +6,10 @@ public class Maker {
 	//private static final long serialVersionUID = 1278136335268310294L;
 	int i,j;
 	private Puyo puyos[][] = new Puyo[MAX_PUYOS][2];
-		
+	
+	public static String DIRETORIO =
+	         AppPuyo.class.getResource(".").getPath();
+	
 	final static int MAX_PUYOS = 6*12;
 		
 	//puyo colors
@@ -28,7 +31,7 @@ public class Maker {
 					case Puyo.PURPLE:
 					    puyos[i][j].setColor(Puyo.PURPLE);
 					    puyos[i][j].setImage("imagens/purple.png");
-					    System.out.println("fez azul");
+					    System.out.println("fez roxo");
 					    break;
 					case Puyo.RED:
 					    puyos[i][j].setColor(Puyo.RED);

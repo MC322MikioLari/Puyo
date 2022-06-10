@@ -23,7 +23,7 @@ public class Puyo extends Componentes{
     private int color, posX, posY;
     private String img;
     private int x, y;
-    ImagemAnimada animado;
+    private ImagemAnimada animado;
     
     public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
@@ -33,22 +33,23 @@ public class Puyo extends Componentes{
 		this.posY = 0;
 		this.color = 0;
 		this.img = "";
-		this.animado =  new ImagemAnimada(DIRETORIO + img, 0, -50, 42, 42, 0, 60);
+		this.animado =  new ImagemAnimada("", 0, -50, 42, 42, 0, 60);
     }
-    
-    public int getPosX() {
+
+	public int getPosX() {
 		return posX;
 	}
 	public void setPosX(int posX) {
 		this.posX = posX;
-		animado.setLocation(posX, getPosY());
+		animado.setShiftX(posX);
+		animado.move();
 	}
 	public int getPosY() {
 		return posY;
 	}
 	public void setPosY(int posY) {
 		this.posY = posY;
-		animado.setLocation(getPosX(), posY);
+		animado.setY(posY);
 	}
     public void setColor(int color) {
     	this.color = color;
@@ -58,10 +59,19 @@ public class Puyo extends Componentes{
     }
     public void setImage(String img) {
     	this.img = img;
+    	this.setAnimado(new ImagemAnimada(DIRETORIO + this.getImage(), 0, -50, 42, 42, 0, 60));
     }
     public String getImage() {
     	return this.img;
     }
+    public ImagemAnimada getAnimado() {
+		return animado;
+	}
+
+	public void setAnimado(ImagemAnimada animado) {
+		this.animado = animado;
+	}
+	
     public void Movimento(String comando) {
     	if (comando == "S")
     		if (getPosY() + 30 < heightWindow)
