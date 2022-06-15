@@ -11,18 +11,4 @@ public class Controle {
 		}
 		else return false;
 		}
-		
-		
-	public void executa(String comando) {
-		if (comando == "a"|| comando == "s" || comando == "d") {
-			p.Movimento(comando);	
-		}
-		else if (comando == "w") {
-			p.Gira();
-		}
-		else if (comando == "q") {
-			//quer sair do jogo
-		}
-		else System.out.println("Erro: comando nao existente.");
-	}
 }

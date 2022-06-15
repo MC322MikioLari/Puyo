@@ -1,9 +1,6 @@
 package puyopuyo;
 
-import java.awt.event.ActionEvent;
-import java.util.Random;
-
-import javax.swing.ImageIcon;
+import java.awt.event.KeyEvent;
 
 public class Puyo extends Componentes{
 	
@@ -22,7 +19,6 @@ public class Puyo extends Componentes{
     
     private int color, posX, posY;
     private String img;
-    private int x, y;
     private ImagemAnimada animado;
     
     public static String DIRETORIO =
@@ -41,50 +37,66 @@ public class Puyo extends Componentes{
 	}
 	public void setPosX(int posX) {
 		this.posX = posX;
+		/*
 		animado.setShiftX(posX);
-		animado.move();
+		animado.move();*/
 	}
 	public int getPosY() {
 		return posY;
 	}
 	public void setPosY(int posY) {
 		this.posY = posY;
-		animado.setY(posY);
 	}
+    public int getColor() {
+    	return this.color;
+    }
     public void setColor(int color) {
     	this.color = color;
     }
-    public int getColor() {
-    	return this.color;
+    public String getImage() {
+    	return this.img;
     }
     public void setImage(String img) {
     	this.img = img;
     	this.setAnimado(new ImagemAnimada(DIRETORIO + this.getImage(), 0, -50, 42, 42, 0, 60));
     }
-    public String getImage() {
-    	return this.img;
-    }
     public ImagemAnimada getAnimado() {
 		return animado;
 	}
-
 	public void setAnimado(ImagemAnimada animado) {
 		this.animado = animado;
 	}
-	
-    public void Movimento(String comando) {
-    	if (comando == "S")
-    		if (getPosY() + 30 < heightWindow)
-    			setPosY(getPosY()+30);
-    	else if (comando == "A")
-    		if (getPosX()-30 > 0)
-    			setPosX(getPosX()-30);
-    	else if (comando == "D")
-    		if (getPosX()+30 < widthWindow)
-    			setPosX(getPosX()+30);
-    }
-    public void Gira() {
-    	
-    }
-
+	 public void Left() {
+		   if (posX-30 > 0)
+			   setPosX(posX-30);
+	   }
+	 public void Right(){
+		if (posX+30 < widthWindow)
+			 setPosX(posX+30);
+	   }
+	 public void Down(){
+		if (posY + 30 < heightWindow)
+			 setPosY(posY+30);
+	   }
+	 public void Gira() {
+	   	
+	 }
+	 public void mover(int e) {
+		if (e == KeyEvent.VK_RIGHT) {
+			this.getAnimado().Right();
+			this.Right();
+		}
+		else if (e == KeyEvent.VK_LEFT) {
+			this.getAnimado().Left();
+			this.Left();
+		}
+		else if (e == KeyEvent.VK_DOWN) {
+			this.getAnimado().Down();
+			this.Down();
+		}
+		else if (e == KeyEvent.VK_UP) {
+			this.getAnimado().Gira();
+			this.Gira();
+		}
+	}
 }

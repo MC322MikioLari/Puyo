@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-public class Metronomo extends ActionSubject implements ActionListener {
+public class Notifier extends ActionSubject implements ActionListener {
    private Timer metro;
    private int quantidade, corrente;
-    
-   public Metronomo(int intervalo, int quantidade) {
+   
+   public Notifier(int intervalo, int quantidade) {
       this.quantidade = quantidade;
       corrente = 0;
       metro = new Timer(intervalo, this);

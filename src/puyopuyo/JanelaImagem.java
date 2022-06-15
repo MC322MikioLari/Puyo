@@ -19,6 +19,7 @@ public class JanelaImagem extends JFrame {
    ImagemAnimada[] animado = new ImagemAnimada[2];
    
    Board panel = new Board();
+   Keyboard keyboard = new Keyboard();
    
    int i, j;
    
@@ -32,30 +33,15 @@ public class JanelaImagem extends JFrame {
       //visual();
       setLocationRelativeTo(null);
       setVisible(true);
-  
+      
+      panel.add(keyboard);
       add(panel);
       panel.setLayout(null);
       panel.setBackground(Color.white);
    }
-
-   /*
-   public ImagemAnimada[] sendPuyos(int i) {
-	   animado[0] = new ImagemAnimada(DIRETORIO + p[i][0].getImage(), 0, -50, 42, 42, 0, 60);
-	   animado[1] = new ImagemAnimada(DIRETORIO + p[i][1].getImage(), 0, -25, 42, 42, 0, 60);
-	   return animado;
-   }*/
    
    public void adicionaImagem(ImagemAnimada img) {
 	   panel.add(img);
 	   SwingUtilities.updateComponentTreeUI(panel);
    }
-   /*
-   public void adicionaImagem(String img) {
-	   ImageIcon imagem = new ImageIcon(img);
-	   JLabel campoImagem = new JLabel(imagem);
-	   painel.add(campoImagem);
-	   SwingUtilities.updateComponentTreeUI(this);
-   }
-   */
-   
 }
