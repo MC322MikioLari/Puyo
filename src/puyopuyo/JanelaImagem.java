@@ -19,7 +19,7 @@ public class JanelaImagem extends JFrame {
    ImagemAnimada[] animado = new ImagemAnimada[2];
    
    Board panel = new Board();
-   Keyboard keyboard = new Keyboard();
+   Keyboard keyboard = new Keyboard(new Puyo(), new Puyo());
    
    int i, j;
    
@@ -36,12 +36,15 @@ public class JanelaImagem extends JFrame {
       
       panel.add(keyboard);
       add(panel);
-      panel.setLayout(null);
+      //panel.setLayout(null);
       panel.setBackground(Color.white);
    }
    
    public void adicionaImagem(ImagemAnimada img) {
 	   panel.add(img);
+	   panel.repaint();
 	   SwingUtilities.updateComponentTreeUI(panel);
+	   panel.setVisible(true);
+	   System.out.println("Adicionei img");
    }
 }

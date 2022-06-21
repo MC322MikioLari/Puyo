@@ -1,6 +1,7 @@
 package puyopuyo;
 
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 
 public class Puyo extends Componentes{
 	
@@ -17,7 +18,10 @@ public class Puyo extends Componentes{
     final static int widthWindow = 252;
     final static int heightWindow = 504;
     
-    private int color, posX, posY;
+    private int color, posX, posY, angulo;
+    private boolean ativo, eliminado;
+
+	Puyo PuyosProx[] ;
     private String img;
     private ImagemAnimada animado;
     
@@ -30,7 +34,27 @@ public class Puyo extends Componentes{
 		this.color = 0;
 		this.img = "";
 		this.animado =  new ImagemAnimada("", 0, -50, 42, 42, 0, 60);
+		this.angulo = 0;
+		this.PuyosProx = null; //ele mesmo
+		this.ativo = true;
+		this.eliminado = false;
     }
+
+	public Puyo[] getPuyosProx() {
+		return PuyosProx;
+	}
+
+	public void setPuyosProx(Puyo[] puyosProx) {
+		System.arraycopy(puyosProx, 0, this.PuyosProx, this.PuyosProx.length, puyosProx.length);
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
 
 	public int getPosX() {
 		return posX;
@@ -66,37 +90,54 @@ public class Puyo extends Componentes{
 	public void setAnimado(ImagemAnimada animado) {
 		this.animado = animado;
 	}
-	 public void Left() {
+
+	public int getAngulo() {
+		return angulo;
+	}
+
+	public void setAngulo(int angulo) {
+		this.angulo = angulo;
+	}
+	public boolean isEliminado() {
+		return eliminado;
+	}
+
+	public void setEliminado(boolean eliminado) {
+		this.eliminado = eliminado;
+	}
+	public void Left() {
 		   if (posX-30 > 0)
 			   setPosX(posX-30);
-	   }
+	 }
 	 public void Right(){
 		if (posX+30 < widthWindow)
 			 setPosX(posX+30);
-	   }
+	 }
 	 public void Down(){
 		if (posY + 30 < heightWindow)
 			 setPosY(posY+30);
-	   }
-	 public void Gira() {
-	   	
 	 }
-	 public void mover(int e) {
-		if (e == KeyEvent.VK_RIGHT) {
-			this.getAnimado().Right();
-			this.Right();
-		}
-		else if (e == KeyEvent.VK_LEFT) {
-			this.getAnimado().Left();
-			this.Left();
-		}
-		else if (e == KeyEvent.VK_DOWN) {
-			this.getAnimado().Down();
-			this.Down();
-		}
-		else if (e == KeyEvent.VK_UP) {
-			this.getAnimado().Gira();
-			this.Gira();
-		}
-	}
+	 public void Gira(Puyo p) {
+		 if (p.getAngulo() == 0) {
+			 this.setPosX(this.getPosX()-42);
+		 	 this.setPosY(this.getPosY()-42);
+		 	 p.angulo = 45;
+		 }
+		 else if (p.getAngulo() == 45) {
+			 this.setPosX(this.getPosX()+42);
+			 p.setPosY(p.getPosY()-42);
+			 p.angulo = 90;
+		 }
+		 else if (p.getAngulo()==90) {
+			 p.setPosX(p.getPosX()-42);
+		 	 p.setPosY(p.getPosY()-42);
+		 	 p.angulo = 135;
+		 }
+		 else if (p.getAngulo()==135) {
+			 p.setPosX(p.getPosX()+42);
+		 	 this.setPosY(this.getPosY()-42);
+		 	 p.angulo = 135;
+		 }
+	 }
 }
+

@@ -10,16 +10,12 @@ public class AppPuyo {
 	public static Maker maker = new Maker();
 	public static int i, j;
 	public static Puyo[][] p = maker.makePuyos();
-	
-	Keyboard keyboard = new Keyboard();
-    public int e = keyboard.retornaEvento();
     
 	public static void main(String[] args) {
 		
 	    JanelaImagem janela = new JanelaImagem();
 	    
 	    Notifier metro = new Notifier(1000, 10);
-	    
 	    
 	    for (i = 0; i < MAX_PUYOS/2; i++) {
 	    	   for (j = 0; j < 2; j++) {   
@@ -29,8 +25,8 @@ public class AppPuyo {
 		     	   janela.adicionaImagem(animado);
 		     	   System.out.println("Inseriu Puyo");
 		     	   metro.start();
-		       	  
 		       }
+	    	   Keyboard keyboard = new Keyboard(p[i][0], p[i][1]);
 	    	   try {
 		 			Thread.sleep(7000);
 		       	  } 
@@ -39,8 +35,5 @@ public class AppPuyo {
 		      }
 	      }
     } 
-	public void move() {
-		p[i][j].mover(e);
-	}
 
 }
