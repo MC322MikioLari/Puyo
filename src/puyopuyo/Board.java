@@ -13,7 +13,8 @@ public class Board extends JPanel{
 	//private static final long serialVersionUID = 1278136335268310294L;
 
 	Placar placar = new Placar();
-		
+	public static String DIRETORIO =
+	         AppPuyo.class.getResource(".").getPath();
 	public void paintComponent(Graphics g2){
 		super.paintComponent(g2);
 		g2.setColor(Color.BLACK);

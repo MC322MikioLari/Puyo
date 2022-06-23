@@ -1,13 +1,18 @@
 package puyopuyo;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Keyboard extends JPanel {
+public class Keyboard extends JPanel{
 	int event;
-	public Keyboard(Puyo p1, Puyo p2) {
+	Puyo p1, p2;
+	public Keyboard(Puyo puyo1, Puyo puyo2) {
+		this.p1 = null;
+		this.p2 = null;
 		KeyListener listener = new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -18,7 +23,9 @@ public class Keyboard extends JPanel {
 				System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
 				event = e.getKeyCode();
 				if (event != 0)
-					movePuyo(p1, p2);
+					link(puyo1, puyo2);
+					puyo1.movePuyo(event);
+					puyo2.movePuyo(event);
 			}
 	
 			@Override
@@ -29,8 +36,29 @@ public class Keyboard extends JPanel {
 		setFocusable(true);
 	}
 	
-	public void movePuyo(Puyo p1, Puyo p2) {
-		if (event == KeyEvent.VK_RIGHT) {
+	public void link(Puyo Puyo1, Puyo Puyo2) {
+		this.p1 = Puyo1;
+		this.p2 = Puyo2;
+		System.out.println("Linkei");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*if (event == KeyEvent.VK_RIGHT) {
+			p1.getAnimado().setShiftY(0);
+			p1.getAnimado().setShiftX(40);
+			
 			p1.getAnimado().Right();
 			p1.Right();
 			p2.getAnimado().Right();
@@ -57,5 +85,4 @@ public class Keyboard extends JPanel {
 			System.out.println("Girou");
 		}
 		
-	}
-}
+	}*/

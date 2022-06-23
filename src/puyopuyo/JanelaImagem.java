@@ -16,10 +16,9 @@ public class JanelaImagem extends JFrame {
    final static int HEIGHT = 504;
 
    Maker maker = new Maker();
-   ImagemAnimada[] animado = new ImagemAnimada[2];
    
    Board panel = new Board();
-   Keyboard keyboard = new Keyboard(new Puyo(), new Puyo());
+   Keyboard keyboard = new Keyboard(new Puyo(""), new Puyo(""));
    
    int i, j;
    
@@ -30,21 +29,42 @@ public class JanelaImagem extends JFrame {
       super();
       setSize(WIDTH, HEIGHT);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
-      //visual();
       setLocationRelativeTo(null);
       setVisible(true);
       
       panel.add(keyboard);
       add(panel);
-      //panel.setLayout(null);
-      panel.setBackground(Color.white);
+	  panel.setLayout(null);
+	  panel.setBackground(Color.white);
    }
    
-   public void adicionaImagem(ImagemAnimada img) {
+   public void adicionaImagem(Puyo img) {
 	   panel.add(img);
-	   panel.repaint();
 	   SwingUtilities.updateComponentTreeUI(panel);
-	   panel.setVisible(true);
-	   System.out.println("Adicionei img");
    }
+   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+panel.add(new ImagemAnimada(DIRETORIO + "imagens/purple.png", 0, 0, 42, 42, 0, 60));
+panel.add(new ImagemAnimada(DIRETORIO + "imagens/red.png", 0, 40, 42, 42, 0, 60));
+panel.add(new ImagemAnimada(DIRETORIO + "imagens/red.png", 0, 80, 42, 42, 0, 60));
+SwingUtilities.updateComponentTreeUI(panel);*/

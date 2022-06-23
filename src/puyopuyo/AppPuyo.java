@@ -20,9 +20,9 @@ public class AppPuyo {
 	    for (i = 0; i < MAX_PUYOS/2; i++) {
 	    	   for (j = 0; j < 2; j++) {   
 	    		   if (j == 1)
-	    			   p[i][j].setPosY(-25);
-		     	   ImagemAnimada animado = p[i][j].getAnimado();
-		     	   janela.adicionaImagem(animado);
+	    			   p[i][j].setY(-25);
+		     	   metro.addActionListener(p[i][j]);
+		     	   janela.adicionaImagem(p[i][j]);
 		     	   System.out.println("Inseriu Puyo");
 		     	   metro.start();
 		       }
