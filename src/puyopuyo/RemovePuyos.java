@@ -1,7 +1,7 @@
 package puyopuyo;
 
 public class RemovePuyos {
-	final static int MAX_PUYOS = 6*12;
+	final static int MAX_PUYOS = 7*12;
 	
 	public RemovePuyos(Puyo p[][]) {
 		for(int i=0; i<MAX_PUYOS/2; i++) {

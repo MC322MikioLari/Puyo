@@ -7,14 +7,14 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Puyo extends JLabel implements ActionListener {
+public class Puyo extends JLabel implements ActionListener{ //,Runnable {
    //private static final long serialVersionUID = 4310667556938403035L;
 
-   private int x, y, shiftX, shiftY, angulo, color;
+   private int x, y, shiftX, shiftY, angulo, color, event;
    private boolean ativo, eliminado;
    Puyo PuyosProx[] ;
    
-   final static int MAX_PUYOS = 6*12;
+   final static int MAX_PUYOS = 7*12;
 	
    //Puyo colors
    final static int PURPLE   = 0;
@@ -31,15 +31,17 @@ public class Puyo extends JLabel implements ActionListener {
       super(new ImageIcon(arquivoImagem));
       setSize(42, 42);
       this.x = 0;
-      this.y = -50;
+      this.y = 0;
       this.angulo = 0;
       this.shiftX = 0;
-      this.shiftY = 50;
+      this.shiftY = 20;
       this.color = -1;
       this.PuyosProx = null;
       this.ativo = true;
       this.eliminado = false;
+      this.event = 0;
    }
+
 
    public int getAngulo() {
 	   return angulo;
@@ -114,25 +116,12 @@ public class Puyo extends JLabel implements ActionListener {
 		//this.setImage(null);
    }
    
-   /*
-   public void move() {
-      x = shiftX;
-      y = shiftY;
-      setLocation(x, y);
-      System.out.println("dentro"+shiftX);
-   }*/
-   
-   public void Left() {
-	   if (x-30 > 0)
-		   setLocation(x-30, y);
+   public int getEvent() {
+		return event;
    }
-   public void Right(){
-	   if (x+30 < widthWindow)
-		   setLocation(x+30, y);
-   }
-   public void Down(){
-	   if (y + 30 < heightWindow)
-		   setLocation(x, y+30);
+
+   public void setEvent(int event) {
+		this.event = event;
    }
    public void Gira(Puyo p) {
 	   if (p.getAngulo() == 0) {
@@ -156,34 +145,12 @@ public class Puyo extends JLabel implements ActionListener {
 		 	 p.angulo = 135;
 		 }
    }
-   
-   public void movePuyo(int event) {
-		if (event == KeyEvent.VK_RIGHT) {
-			/*
-			this.setShiftY(0);
-			shiftX = 40;*/
-			setLocation(x+=40, y);
-			repaint();
-			System.out.println("Moveu para direita");
-		}
-		else if (event == KeyEvent.VK_LEFT) {
-			this.setShiftY(0);
-			this.setShiftX(-40);
-			System.out.println("Moveu para esq");
-		}
-		else if (event == KeyEvent.VK_DOWN) {
-			this.setShiftY(40);
-			this.setShiftX(0);
-			System.out.println("Moveu para baixo");
-		}
-		else if (event == KeyEvent.VK_UP) {
-			System.out.println("Girou");
-		}
-   }
-   
-   public void actionPerformed(ActionEvent evento) {
-	   System.out.println("Entrou");
-	   setLocation(x+=shiftX, y+=shiftY);
-   }
+ 
+	public void actionPerformed(ActionEvent evento) {
+		setLocation(x+=shiftX, y+=shiftY);
+		this.setShiftX(0);
+		this.setShiftY(20);
+		setLocation(x+=shiftX, y+=shiftY);
+	}
 
 }

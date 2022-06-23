@@ -18,14 +18,13 @@ public class JanelaImagem extends JFrame {
    Maker maker = new Maker();
    
    Board panel = new Board();
-   Keyboard keyboard = new Keyboard(new Puyo(""), new Puyo(""));
    
    int i, j;
    
    public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
    
-   public JanelaImagem() {
+   public JanelaImagem(Keyboard keyboard) {
       super();
       setSize(WIDTH, HEIGHT);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -44,27 +43,3 @@ public class JanelaImagem extends JFrame {
    }
    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-panel.add(new ImagemAnimada(DIRETORIO + "imagens/purple.png", 0, 0, 42, 42, 0, 60));
-panel.add(new ImagemAnimada(DIRETORIO + "imagens/red.png", 0, 40, 42, 42, 0, 60));
-panel.add(new ImagemAnimada(DIRETORIO + "imagens/red.png", 0, 80, 42, 42, 0, 60));
-SwingUtilities.updateComponentTreeUI(panel);*/

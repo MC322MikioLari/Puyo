@@ -10,7 +10,7 @@ public class Maker {
 	public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
 	
-	final static int MAX_PUYOS = 6*12;
+	final static int MAX_PUYOS = 7*12;
 		
 	//puyo colors
 	final static int PURPLE   = 0;
@@ -30,22 +30,18 @@ public class Maker {
 					case Puyo.PURPLE:
 					    puyos[i][j] = new Puyo(DIRETORIO+"imagens/purple.png");
 					    puyos[i][j].setColor(Puyo.PURPLE);
-					    System.out.println("fez roxo");
 					    break;
 					case Puyo.RED:
 						puyos[i][j] = new Puyo(DIRETORIO+"imagens/red.png");
 					    puyos[i][j].setColor(Puyo.RED);
-					    System.out.println("fez verm");
 					    break;
 					case Puyo.YELLOW:
 						puyos[i][j] = new Puyo(DIRETORIO+"imagens/yellow.png");
 					    puyos[i][j].setColor(Puyo.YELLOW);
-					    System.out.println("fez amarelo");
 					    break;
 					case Puyo.GREEN:
 						puyos[i][j] = new Puyo(DIRETORIO+"imagens/green.png");
 					    puyos[i][j].setColor(Puyo.GREEN);
-					    System.out.println("fez verde");
 					    break;
 				}
 			}

@@ -7,27 +7,23 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Keyboard extends JPanel{
-	int event;
+public class Keyboard extends JPanel implements ActionListener{
+	int event = 0;
 	Puyo p1, p2;
-	public Keyboard(Puyo puyo1, Puyo puyo2) {
+	public Keyboard(Notifier metro) {
 		this.p1 = null;
 		this.p2 = null;
 		KeyListener listener = new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 			}
-	
+			
 			@Override
 			public void keyPressed(KeyEvent e) {
 				System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
 				event = e.getKeyCode();
-				if (event != 0)
-					link(puyo1, puyo2);
-					puyo1.movePuyo(event);
-					puyo2.movePuyo(event);
+				Action(metro);
 			}
-	
 			@Override
 			public void keyReleased(KeyEvent e) {
 			}
@@ -35,54 +31,69 @@ public class Keyboard extends JPanel{
 		addKeyListener(listener);
 		setFocusable(true);
 	}
-	
+	public void Action(Notifier metro) {
+		metro.addActionListener(this);
+	}
+	public void settingEvent() {
+		if (event != 0) {
+			p1.setEvent(event);
+			p2.setEvent(event);
+		}
+	}
 	public void link(Puyo Puyo1, Puyo Puyo2) {
 		this.p1 = Puyo1;
 		this.p2 = Puyo2;
-		System.out.println("Linkei");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (event == KeyEvent.VK_RIGHT) { //Virando para direita
+			p1.setShiftY(0);
+			p1.setShiftX(35);
+			p2.setShiftY(0);
+			p2.setShiftX(35);
+			System.out.println("Moveu para direita");
+			event = 0;
+		}
+		else if (event == KeyEvent.VK_LEFT) { //Virando para esquerda
+			p1.setShiftY(0);
+			p1.setShiftX(-35);
+			p2.setShiftY(0);
+			p2.setShiftX(-35);
+			System.out.println("Moveu para esq");
+			event = 0;
+		}
+		else if (event == KeyEvent.VK_DOWN) { // Indo para baixo
+			p1.setShiftY(20);
+			p1.setShiftX(0);
+			p2.setShiftY(20);
+			p2.setShiftX(0);
+			System.out.println("Moveu para baixo");
+			event = 0;
+		}
+		else if (event == KeyEvent.VK_UP) { // Girando
+			if (p1.getAngulo() == 0) {
+				p1.setShiftX(-35);
+				p1.setShiftY(-8);
+				p1.setAngulo(45);
+			}
+			else if (p1.getAngulo() == 45) {
+				p1.setShiftX(35);
+				p1.setShiftY(-5);
+				p1.setAngulo(90);
+			 }
+			 else if (p1.getAngulo()==90) {
+				p1.setShiftX(35);
+			 	p1.setShiftY(44);
+			 	p1.setAngulo(135);
+			 }
+			 else if (p1.getAngulo()==135) {
+				p1.setShiftX(-35);
+			 	p1.setShiftY(54);
+			 	p1.setAngulo(0);
+			 }
+			System.out.println("Girou");
+			event = 0;
+	   }
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*if (event == KeyEvent.VK_RIGHT) {
-			p1.getAnimado().setShiftY(0);
-			p1.getAnimado().setShiftX(40);
-			
-			p1.getAnimado().Right();
-			p1.Right();
-			p2.getAnimado().Right();
-			p2.Right();
-			System.out.println("Moveu para direita");
-		}
-		else if (event == KeyEvent.VK_LEFT) {
-			p1.getAnimado().Left();
-			p1.Left();
-			p2.getAnimado().Left();
-			p2.Left();
-			System.out.println("Moveu para esq");
-		}
-		else if (event == KeyEvent.VK_DOWN) {
-			p1.getAnimado().Down();
-			p1.Down();
-			p2.getAnimado().Down();
-			p2.Down();
-			System.out.println("Moveu para baixo");
-		}
-		else if (event == KeyEvent.VK_UP) {
-			p1.getAnimado().Gira(p2.getAnimado());
-			p1.Gira(p2);
-			System.out.println("Girou");
-		}
-		
-	}*/

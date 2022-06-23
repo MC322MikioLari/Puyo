@@ -10,6 +10,7 @@ public abstract class ActionSubject {
    
    public void addActionListener(ActionListener listener) {
       listenerArr.add(listener);
+      System.out.println(listener);
    }
    
    public void removeActionListener(ActionListener listener) {
@@ -17,7 +18,7 @@ public abstract class ActionSubject {
    }
    
    public void notify(ActionEvent event) {
-      for (ActionListener al: listenerArr)
+      for (ActionListener al: listenerArr) 
          al.actionPerformed(event);
    }
 }
