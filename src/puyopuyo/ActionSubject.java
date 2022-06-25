@@ -10,7 +10,6 @@ public abstract class ActionSubject {
    
    public void addActionListener(ActionListener listener) {
       listenerArr.add(listener);
-      System.out.println(listener);
    }
    
    public void removeActionListener(ActionListener listener) {

@@ -10,11 +10,14 @@ import javax.swing.JLabel;
 public class Puyo extends JLabel implements ActionListener{ //,Runnable {
    //private static final long serialVersionUID = 4310667556938403035L;
 
-   private int x, y, shiftX, shiftY, angulo, color, event;
-   private boolean ativo, eliminado;
-   Puyo PuyosProx[] ;
+   private int x, y, angulo, color, event, id;
+   private String status;
+   Puyo PuyosProx[];
+   Puyo P[][] ;
+   Notifier metro;
+   Celula celula;
    
-   final static int MAX_PUYOS = 7*12;
+   final static int MAX_PUYOS = 7*13;
 	
    //Puyo colors
    final static int PURPLE   = 0;
@@ -22,26 +25,44 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
    final static int YELLOW = 2;
    final static int GREEN  = 3;
    
-   final static int WIDTH = 42;
-   final static int HEIGHT = 42;
    final static int widthWindow = 252;
-   final static int heightWindow = 504;
+   final static int heightWindow = 468;
+   final static int WIDTH = widthWindow/7;
+   final static int HEIGHT = widthWindow/7;
+   final static int Celula = widthWindow/7;
    
    public Puyo(String arquivoImagem) {
       super(new ImageIcon(arquivoImagem));
-      setSize(42, 42);
+      setSize(WIDTH, HEIGHT);
+      this.id = 0;
       this.x = 0;
       this.y = 0;
       this.angulo = 0;
-      this.shiftX = 0;
-      this.shiftY = 20;
       this.color = -1;
-      this.PuyosProx = null;
-      this.ativo = true;
-      this.eliminado = false;
+      this.PuyosProx = new Puyo[MAX_PUYOS];
+      this.P = null;
+      this.status = "D";
       this.event = 0;
+      this.metro = new Notifier(1000, 10);
+      this.celula = new Celula(this.getX(), this.getY());
    }
 
+
+   public String getStatus() {
+	return status;
+}
+   public void setStatus(String status) {
+	   this.status = status;
+}
+
+
+   public int getId() {
+	   return id;
+   }
+
+   public void setId(int id) {
+	   this.id = id;
+   }
 
    public int getAngulo() {
 	   return angulo;
@@ -57,6 +78,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 
    public void setX(int x) {
 	   this.x = x;
+	   this.celula.setI(x);
    }
 
    public int getY() {
@@ -65,22 +87,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 
    public void setY(int y) {
 	   this.y = y;
-   }
-   
-   public int getShiftX() {
-	   return shiftX;
-   }
-
-   public void setShiftX(int shiftX) {
-		this.shiftX = shiftX;
-   }
-
-   public int getShiftY() {
-		return shiftY;
-   }
-
-   public void setShiftY(int shiftY) {
-		this.shiftY = shiftY;
+	   this.celula.setJ(y);
    }
    
    public Puyo[] getPuyosProx() {
@@ -91,29 +98,12 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 		System.arraycopy(puyosProx, 0, this.PuyosProx, this.PuyosProx.length, puyosProx.length);
    }
    
-   public boolean isAtivo() {
-		return ativo;
-   }
-
-   public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-   }
-   
    public int getColor() {
     	return this.color;
    }
    
    public void setColor(int color) {
     	this.color = color;
-   }
-   
-   public boolean isEliminado() {
-		return eliminado;
-   }
-
-   public void setEliminado(boolean eliminado) {
-		this.eliminado = eliminado;
-		//this.setImage(null);
    }
    
    public int getEvent() {
@@ -123,34 +113,46 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
    public void setEvent(int event) {
 		this.event = event;
    }
-   public void Gira(Puyo p) {
-	   if (p.getAngulo() == 0) {
-			 this.setX(getX()-42);
-		 	 this.setY(getY()-42);
-		 	 p.angulo = 45;
-		 }
-		 else if (p.getAngulo() == 45) {
-			 this.setX(getX()+42);
-			 p.setY(getY()-42);
-			 p.angulo = 90;
-		 }
-		 else if (p.getAngulo()==90) {
-			 p.setX(getX()-42);
-		 	 p.setY(getY()-42);
-		 	 p.angulo = 135;
-		 }
-		 else if (p.getAngulo()==135) {
-			 p.setX(getX()+42);
-		 	 this.setY(getY()-42);
-		 	 p.angulo = 135;
-		 }
+   
+   public Celula getCelula() {
+	   return celula;
    }
- 
-	public void actionPerformed(ActionEvent evento) {
-		setLocation(x+=shiftX, y+=shiftY);
-		this.setShiftX(0);
-		this.setShiftY(20);
-		setLocation(x+=shiftX, y+=shiftY);
+
+   public void setCelula(Celula celula) {
+	   this.celula = celula;
+   }
+   
+   public void link (Puyo puyos[][]) {
+	   this.P = puyos;
+   }
+   
+   public boolean checkPuyos(int X, int Y) {
+	   int J = this.getId()%10;
+	   int I = (this.getId() - J)/10;
+	   for (int i=0; i < MAX_PUYOS/2; i++) {
+		   for(int j=0; j<2; j++) {
+			   if (J == 1 && P[I][0].getStatus() == "P")
+				   return true;
+			   else {
+				   if ( i != I && P[i][j].getStatus() != "D" && P[i][j].getCelula().getI() == X/Celula && P[i][j].getCelula().getJ() == Y/Celula )
+					   return true; //há um puyo diferente de this no ponto (x, y)
+			   }
+		   }
+		}
+	   return false;
 	}
 
+	public void actionPerformed(ActionEvent evento) {
+		if (this.getStatus() == "A") {
+			if (this.getY() <= heightWindow && checkPuyos(this.getX(), this.getY() + Celula) == false) {
+				this.setY(this.getY() + Celula);
+				setLocation(this.getX(), this.getY());
+			}
+			else {
+				this.setStatus("P");
+				this.metro.stop();
+			}
+		}
+	}
 }
+

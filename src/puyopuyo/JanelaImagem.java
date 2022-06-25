@@ -10,10 +10,14 @@ public class JanelaImagem extends JFrame {
    //private static final long serialVersionUID = 1278136335268310294L;
    public Container painel;
    
-   final static int MAX_PUYOS = 6*12;
+   final static int MAX_PUYOS = 6*13;
    
-   final static int WIDTH = 400;
-   final static int HEIGHT = 504;
+   final static int widthTotal = 400;
+   final static int widthWindow = 252;
+   final static int heightWindow = 468;
+   final static int WIDTH = widthWindow/7;
+   final static int HEIGHT = widthWindow/7;
+   final static int Celula = widthWindow/7;
 
    Maker maker = new Maker();
    
@@ -26,7 +30,7 @@ public class JanelaImagem extends JFrame {
    
    public JanelaImagem(Keyboard keyboard) {
       super();
-      setSize(WIDTH, HEIGHT);
+      setSize(widthTotal, heightWindow);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       setLocationRelativeTo(null);
       setVisible(true);

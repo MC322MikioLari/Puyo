@@ -10,7 +10,7 @@ public class Maker {
 	public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
 	
-	final static int MAX_PUYOS = 7*12;
+	final static int MAX_PUYOS = 7*13;
 		
 	//puyo colors
 	final static int PURPLE   = 0;
@@ -18,8 +18,11 @@ public class Maker {
 	final static int YELLOW = 2;
 	final static int GREEN  = 3;
 	    
-	final static int WIDTH = 42;
-	final static int HEIGHT = 42;
+	final static int widthWindow = 252;
+	final static int heightWindow = 468;
+	final static int WIDTH = widthWindow/7;
+	final static int HEIGHT = widthWindow/7;
+	final static int Celula = widthWindow/7;
 		
 	public Puyo[][] makePuyos() {
 		Random rand = new Random();
