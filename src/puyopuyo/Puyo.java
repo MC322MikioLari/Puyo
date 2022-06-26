@@ -12,10 +12,11 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 
    private int x, y, angulo, color, event, id;
    private String status;
-   Puyo PuyosProx[];
+   private Puyo PuyosProx[];
    Puyo P[][] ;
    Notifier metro;
-   Celula celula;
+   private Celula celula;
+   private Boolean gameOver;
    
    final static int MAX_PUYOS = 7*13;
 	
@@ -45,6 +46,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
       this.event = 0;
       this.metro = new Notifier(1000, 10);
       this.celula = new Celula(this.getX(), this.getY());
+      this.gameOver = false;
    }
 
 
@@ -122,6 +124,13 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 	   this.celula = celula;
    }
    
+   public boolean getGameOver() {
+	   return this.gameOver;
+   }
+   public void setGameOver() {
+	   this.gameOver = true;
+	   
+   }
    public void link (Puyo puyos[][]) {
 	   this.P = puyos;
    }
@@ -151,6 +160,8 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 			else {
 				this.setStatus("P");
 				this.metro.stop();
+				if (this.getY() == 0)
+					this.setGameOver();
 			}
 		}
 	}

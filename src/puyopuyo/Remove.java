@@ -80,9 +80,11 @@ public class Remove implements ActionListener {
 						 	int I = (puyosProx[k].getId()-J)/10;
 							findPuyos(p, I, J, puyosProx[k].getColor());
 						}
-						if (k >= 3)
+						//System.out.println(k);
+						if (k >= 3) {
 							System.out.println("Estourar");
 							EliminaPuyos(puyosProx, p);
+						}
 					}
 				}
 			}

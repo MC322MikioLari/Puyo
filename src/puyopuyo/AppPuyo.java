@@ -21,28 +21,35 @@ public class AppPuyo{
 	
 	public static void main(String[] args) {
 	    JanelaImagem janela = new JanelaImagem(keyboard);
-	    
-	    for (i = 0; i < MAX_PUYOS/2; i++) {
-	    	   for (j = 0; j < 2; j++) {   
-	    		   if (j == 1)
-	    			   p[i][j].setY(-Celula);
-	    		   p[i][j].setStatus("A");
-	    		   p[i][j].setId(i*10+j);
-	    		   p[i][j].link(p);
-		     	   p[i][j].metro.addActionListener(p[i][j]);
-		     	   janela.adicionaImagem(p[i][j]);
-		     	   p[i][j].metro.start();
-		       }
-	    	   keyboard.link(p[i][0], p[i][1]);
-	    	   keyboard.settingEvent();
-	    	   metro.start();
-	    	   try {
-		 			Thread.sleep(10000);
-		       	  } 
-		       	  catch (InterruptedException e) {
-		 			System.out.println(e);
+	    boolean gameOver = false;
+	    while (gameOver == false) {
+		    for (i = 0; i < MAX_PUYOS/2; i++) {
+		    	   for (j = 0; j < 2; j++) {   
+		    		   if (j == 1)
+		    			   p[i][j].setY(-Celula);
+		    		   p[i][j].setStatus("A");
+		    		   p[i][j].setId(i*10+j);
+		    		   p[i][j].link(p);
+			     	   p[i][j].metro.addActionListener(p[i][j]);
+			     	   janela.adicionaImagem(p[i][j]);
+			     	   p[i][j].metro.start();
+			       }
+		    	   keyboard.link(p[i][0], p[i][1]);
+		    	   keyboard.settingEvent();
+		    	   metro.start();
+		    	   try {
+			 			Thread.sleep(5000);
+			       	  } 
+			       	  catch (InterruptedException e) {
+			 			System.out.println(e);
+			       }
+		    	   
+		    	   if (p[i][1].getGameOver() == true) {
+		    		   System.out.println("GAME OVER");
+		    		   gameOver = true;
+		    		   janela.GameOver();
+		    	   }
 		      }
-	      }
+	    }
     }
-
 }
