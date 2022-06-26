@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public abstract class ActionSubject {
-   private ArrayList<ActionListener> listenerArr =
+	final static ArrayList<ActionListener> listenerArr =
          new ArrayList<ActionListener>(); 
-   
+  
    public void addActionListener(ActionListener listener) {
-      listenerArr.add(listener);
+	  listenerArr.add(listener);
    }
    
    public void removeActionListener(ActionListener listener) {
@@ -17,7 +17,13 @@ public abstract class ActionSubject {
    }
    
    public void notify(ActionEvent event) {
-      for (ActionListener al: listenerArr) 
+      for (ActionListener al: listenerArr) {
          al.actionPerformed(event);
+      }
    }
 }
+
+
+/*if (al.getClass() == new Keyboard(null).getClass()) {
+        	 System.out.println("Adicionei");
+        	 //listenerArr.remove(al);*/

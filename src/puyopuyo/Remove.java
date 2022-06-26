@@ -35,12 +35,12 @@ public class Remove implements ActionListener {
 					if (p[i][j].getCelula().getJ() == p[I][J].getCelula().getJ() && (p[i][j].getCelula().getI() == p[I][J].getCelula().getI()-1 || p[i][j].getCelula().getI()== p[I][J].getCelula().getI()+1) &&  p[i][j].getColor() == color) {
 							puyosProx[n] = p[i][j];
 							n+=1;
-							System.out.println("i: " + i + " j: " + j);
+							//System.out.println("i: " + i + " j: " + j);
 					}
 					if (p[i][j].getCelula().getI() == p[I][J].getCelula().getI() && (p[i][j].getCelula().getJ() == p[I][J].getCelula().getJ()-1 || p[i][j].getCelula().getJ()== p[I][J].getCelula().getJ()+1) && p[i][j].getColor() == color) {
 							puyosProx[n] = p[i][j];
 							n+=1;
-							System.out.println("i: " + i + " j: " + j);
+							//System.out.println("i: " + i + " j: " + j);
 					}
 				}
 			}
@@ -81,6 +81,7 @@ public class Remove implements ActionListener {
 							findPuyos(p, I, J, puyosProx[k].getColor());
 						}
 						if (k >= 3)
+							System.out.println("Estourar");
 							EliminaPuyos(puyosProx, p);
 					}
 				}

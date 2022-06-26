@@ -26,7 +26,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
    final static int GREEN  = 3;
    
    final static int widthWindow = 252;
-   final static int heightWindow = 468;
+   final static int heightWindow = 375;
    final static int WIDTH = widthWindow/7;
    final static int HEIGHT = widthWindow/7;
    final static int Celula = widthWindow/7;
