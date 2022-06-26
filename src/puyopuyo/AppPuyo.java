@@ -17,11 +17,13 @@ public class AppPuyo{
 	public static Puyo[][] p = maker.makePuyos();
 	public static Notifier metro = new Notifier(1000, 10);
 	public static Keyboard keyboard = new Keyboard(metro);
-    public static Remove removePuyos = new Remove(p, metro);
-	
+	public static Placar placar = new Placar();
+	public static JanelaImagem janela = new JanelaImagem(keyboard, placar);
+    public static Remove removePuyos = new Remove(p, metro, placar, janela);
+    static boolean gameOver = false;
+    
 	public static void main(String[] args) {
-	    JanelaImagem janela = new JanelaImagem(keyboard);
-	    boolean gameOver = false;
+	    
 	    while (gameOver == false) {
 		    for (i = 0; i < MAX_PUYOS/2; i++) {
 		    	   for (j = 0; j < 2; j++) {   

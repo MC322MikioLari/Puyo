@@ -40,7 +40,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
       this.y = 0;
       this.angulo = 0;
       this.color = -1;
-      this.PuyosProx = new Puyo[MAX_PUYOS];
+      this.PuyosProx = new Puyo[20];
       this.P = null;
       this.status = "D";
       this.event = 0;
@@ -97,7 +97,15 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
    }
 
    public void setPuyosProx(Puyo[] puyosProx) {
-		System.arraycopy(puyosProx, 0, this.PuyosProx, this.PuyosProx.length, puyosProx.length);
+		this.PuyosProx = puyosProx;
+   }
+   
+   public void addPuyoProx(Puyo p) {
+	   int i;
+	   Puyo Prox [] = this.getPuyosProx();
+	   for (i=0; Prox[i] != null; i++);
+	   Prox[i] = p;
+	   setPuyosProx(Prox);
    }
    
    public int getColor() {
@@ -143,7 +151,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 			   if (J == 1 && P[I][0].getStatus() == "P")
 				   return true;
 			   else {
-				   if ( i != I && P[i][j].getStatus() != "D" && P[i][j].getCelula().getI() == X/Celula && P[i][j].getCelula().getJ() == Y/Celula )
+				   if ( i != I && P[i][j].getStatus() != "D" && P[i][j].getStatus() != "E" && P[i][j].getCelula().getI() == X/Celula && P[i][j].getCelula().getJ() == Y/Celula )
 					   return true; //há um puyo diferente de this no ponto (x, y)
 			   }
 		   }
@@ -159,7 +167,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 			}
 			else {
 				this.setStatus("P");
-				this.metro.stop();
+				//this.metro.stop();
 				if (this.getY() == 0)
 					this.setGameOver();
 			}

@@ -30,7 +30,6 @@ public class Keyboard extends JPanel implements ActionListener{
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
 				event = e.getKeyCode();
 				Action(metro);
 			}
@@ -65,7 +64,6 @@ public class Keyboard extends JPanel implements ActionListener{
 				if ((p1.checkPuyos(p1.getX() + Celula, p1.getY()) == false) && (p2.checkPuyos(p2.getX() + Celula, p2.getY()) == false)) {
 					p1.setX(p1.getX() + Celula);
 					p2.setX(p2.getX() + Celula);
-					System.out.println("Moveu para direita");
 					event = 0;
 				}
 			}
@@ -75,7 +73,6 @@ public class Keyboard extends JPanel implements ActionListener{
 				if ((p1.checkPuyos(p1.getX() - Celula, p1.getY()) == false) && (p2.checkPuyos(p2.getX() - Celula, p2.getY()) == false)) {
 					p1.setX(p1.getX() - Celula);
 					p2.setX(p2.getX() - Celula);
-					System.out.println("Moveu para esq");
 					event = 0;
 				}
 			}
@@ -85,7 +82,6 @@ public class Keyboard extends JPanel implements ActionListener{
 				if ((p1.checkPuyos(p1.getX(), p1.getY()+Celula) == false) && (p2.checkPuyos(p2.getX(), p2.getY()+ Celula) == false)) {
 					p1.setY(p1.getY() + Celula);
 					p2.setY(p2.getY() + Celula);
-					System.out.println("Moveu para baixo");
 					event = 0;
 				}
 			}
@@ -112,7 +108,6 @@ public class Keyboard extends JPanel implements ActionListener{
 				p1.setY(p1.getY() + Celula);
 			 	p1.setAngulo(0);
 			 }
-			System.out.println("Girou");
 			event = 0;
 	   }
 		p1.setLocation(p1.getX(), p1.getY());

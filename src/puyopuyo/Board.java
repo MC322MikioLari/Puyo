@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel{
 	//private static final long serialVersionUID = 1278136335268310294L;
-
 	Placar placar = new Placar();
 	public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
@@ -27,5 +26,8 @@ public class Board extends JPanel{
 			
 		String score = Integer.toString(placar.getScore());
 		g2.drawString("Score: " + score, 260, 20);
+	}
+	public void link(Placar p) {
+		placar = p;
 	}
  }

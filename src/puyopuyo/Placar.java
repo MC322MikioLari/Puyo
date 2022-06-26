@@ -12,6 +12,6 @@ public class Placar {
 	}
 
 	public void setScore(int score) {
-		this.score = score;
+		this.score = getScore() + score;
 	}
 }

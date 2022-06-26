@@ -31,12 +31,14 @@ public class JanelaImagem extends JFrame {
    public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
    
-   public JanelaImagem(Keyboard keyboard) {
+   public JanelaImagem(Keyboard keyboard, Placar placar) {
       super();
       setSize(widthTotal, heightWindow);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       setLocationRelativeTo(null);
       setVisible(true);
+      
+      panel.link(placar);
       
       panel.add(keyboard);
       add(panel);
