@@ -23,6 +23,7 @@
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo
-![image](https://user-images.githubusercontent.com/82288999/174860428-0ea52258-a8ad-45d1-be01-b91c472d2507.png)
+![image](https://user-images.githubusercontent.com/82288999/176044745-79eb9d70-346f-4411-9e80-c45aa416bffd.png)
+
 
 > Apresente um diagrama geral da arquitetura do jogo. O formato é livre. A escolha de um ou mais estilos arquiteturais será considerado um diferencial.
