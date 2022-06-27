@@ -38,8 +38,6 @@ public class JanelaImagem extends JFrame {
       setLocationRelativeTo(null);
       setVisible(true);
       
-      panel.link(placar);
-      
       panel.add(keyboard);
       add(panel);
 	  panel.setLayout(null);

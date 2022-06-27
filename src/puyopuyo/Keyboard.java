@@ -87,7 +87,6 @@ public class Keyboard extends JPanel implements ActionListener{
 			}
 		}
 		else if (event == KeyEvent.VK_UP) { // Girando
-			System.out.println(p2.getY());
 			if (p1.getAngulo() == 0) {
 				p1.setX(p1.getX() - Celula);
 				p1.setY(p2.getY());

@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel{
 	//private static final long serialVersionUID = 1278136335268310294L;
-	Placar placar = new Placar();
+	String score;
+	int s = 0;
+	
 	public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
 	public void paintComponent(Graphics g2){
@@ -24,10 +26,13 @@ public class Board extends JPanel{
 		g2.setColor(Color.BLACK);
 		g2.setFont(new Font("serif", Font.BOLD, 20));
 			
-		String score = Integer.toString(placar.getScore());
+		score = Integer.toString(s);
 		g2.drawString("Score: " + score, 260, 20);
 	}
-	public void link(Placar p) {
-		placar = p;
+	
+	public void ChangePlacar(int score) {
+		System.out.println("entrei");
+		s += score;
+		this.validate();
 	}
  }
