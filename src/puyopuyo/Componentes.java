@@ -1,6 +1,8 @@
 package puyopuyo;
 
-public class Componentes {
+import javax.swing.JLabel;
+
+public class Componentes extends JLabel {
 	
 	private int posX, posY, color;
 	private String img;
