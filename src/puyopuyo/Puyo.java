@@ -36,7 +36,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
       super(new ImageIcon(arquivoImagem));
       setSize(WIDTH, HEIGHT);
       this.id = 0;
-      this.x = 0;
+      this.x = 295;
       this.y = 0;
       this.angulo = 0;
       this.color = -1;
@@ -100,14 +100,6 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 		this.PuyosProx = puyosProx;
    }
    
-   public void addPuyoProx(Puyo p) {
-	   int i;
-	   Puyo Prox [] = this.getPuyosProx();
-	   for (i=0; Prox[i] != null; i++);
-	   Prox[i] = p;
-	   setPuyosProx(Prox);
-   }
-   
    public int getColor() {
     	return this.color;
    }
@@ -151,7 +143,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 			   if (J == 1 && P[I][0].getStatus() == "P")
 				   return true;
 			   else {
-				   if ( i != I && P[i][j].getStatus() != "D" && P[i][j].getStatus() != "E" && P[i][j].getCelula().getI() == X/Celula && P[i][j].getCelula().getJ() == Y/Celula )
+				   if (i != I && P[i][j].getStatus() != "D" && P[i][j].getStatus() != "E" && P[i][j].getCelula().getI() == X/Celula && P[i][j].getCelula().getJ() == Y/Celula )
 					   return true; //há um puyo diferente de this no ponto (x, y)
 			   }
 		   }

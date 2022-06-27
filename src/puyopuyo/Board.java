@@ -23,15 +23,15 @@ public class Board extends JPanel{
 		Stroke stroke = new BasicStroke(4f);
 		((Graphics2D) g2).setStroke(stroke);
 		g2.drawLine(252, 0, 252, 700);
+		g2.drawLine(252, 72, 400, 72);
 		g2.setColor(Color.BLACK);
 		g2.setFont(new Font("serif", Font.BOLD, 20));
 			
 		score = Integer.toString(s);
-		g2.drawString("Score: " + score, 260, 20);
+		g2.drawString("Score: " + score, 260, 400);
 	}
 	
 	public void ChangePlacar(int score) {
-		System.out.println("entrei");
 		s += score;
 		this.validate();
 	}
