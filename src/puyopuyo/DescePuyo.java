@@ -7,6 +7,7 @@ public class DescePuyo implements ActionListener {
 	final static int MAX_PUYOS = 7*13;
 	final static int widthWindow = 252;
 	final static int heightWindow = 375;
+	
 	final static int Celula = widthWindow/7;
 	Puyo p[][];
 	public DescePuyo(Puyo p[][], Notifier metro) {
