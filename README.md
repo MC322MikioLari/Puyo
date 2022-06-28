@@ -15,10 +15,11 @@
 # Slides do Projeto
 
 ## Slides da Prévia
+
 > [link](https://www.canva.com/design/DAFBKpJP6-U/I3DJP-M3G08Ff8unRmgwOw/view?utm_content=DAFBKpJP6-U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Slides da Apresentação Final
-> [link](https://www.canva.com/design/DAFE42wsu8I/cCOMiULW_cm2h4bK6S8Ttw/view?utm_content=DAFE42wsu8I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+> [link](https://user-images.githubusercontent.com/82288999/176211576-65cf27e9-24ee-4a49-af1c-daa1e2b43a4e.mp4)
 
 # Diagramas
 
