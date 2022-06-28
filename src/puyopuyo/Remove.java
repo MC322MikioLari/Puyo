@@ -14,13 +14,15 @@ public class Remove implements ActionListener {
 	Puyo p[][];
 	Puyo visitados[], CoresIguais[];
 	Placar placar;
+	Sound sound;
 	JanelaImagem janela;
 	int n = 1;
 	
-	public Remove(Puyo p[][], Notifier metro, Placar placar, JanelaImagem janela) {
+	public Remove(Puyo p[][], Notifier metro, Placar placar, JanelaImagem janela, Sound sound) {
 		this.p = p;
 		this.placar = placar;
 		this.janela = janela;
+		this.sound = sound;
 		metro.addActionListener(this);
 	}
 	
@@ -52,11 +54,7 @@ public class Remove implements ActionListener {
 		for (w = 0; lista[w] != null; w++);
 		return w;
 	}
-	/*
-	public void setNull(Puyo lista[]) {
-		for (w = 0; lista[w] != null; w++);
-		
-	}*/
+
 	public void findPuyos(Puyo p[][], int I, int J, int color) {
 		for(int i=0; i<MAX_PUYOS/2; i++) {
 			for(int j=0; j<2; j++) {
@@ -83,7 +81,7 @@ public class Remove implements ActionListener {
 	public void EliminaPuyos(Puyo eliminados[], Puyo p[][]) {
 		for (int i = 0; eliminados[i] != null; i++) {
 			eliminados[i].setStatus("E");
-			
+			sound.ComboSound();
 			janela.panel.remove(eliminados[i]);
 			janela.panel.validate();
 			janela.panel.validate();
@@ -103,8 +101,6 @@ public class Remove implements ActionListener {
 			for(int j=0; j<2; j++) {
 				CoresIguais = new Puyo [20];
 				visitados = new Puyo [20];
-				System.out.println(tam(CoresIguais));
-				System.out.println(tam(visitados));
 				if ((p[i][j].getStatus() == "P") && p[i][j].getPuyosProx()[0] != null)
 					SearchSameColor(p[i][j], CoresIguais);
 				if (tam(CoresIguais) >= 4) {

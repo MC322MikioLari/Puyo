@@ -1,8 +1,6 @@
 package puyopuyo;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.swing.JOptionPane;
 
 public class AppPuyo{
 	final static int MAX_PUYOS = 7*13;
@@ -23,42 +21,41 @@ public class AppPuyo{
 	public static Keyboard keyboard = new Keyboard(metro);
 	public static Placar placar = new Placar();
 	public static JanelaImagem janela = new JanelaImagem(keyboard, placar);
-    public static Remove removePuyos = new Remove(p, metro, placar, janela);
+	public static Sound sound= new Sound();
+    public static Remove removePuyos = new Remove(p, metro, placar, janela, sound);
     public static DescePuyo descePuyo = new DescePuyo(p, metro);
-    static boolean gameOver = false;
+    public static boolean gameOver = false;
     
 	public static void main(String[] args) {
 	    while (gameOver == false) {
-	    	try {
-	            AudioInputStream audioInputStream = 
-	            		AudioSystem.getAudioInputStream(AppPuyo.class.getResource("assets/backgroundMusic.wav"));
-	            Clip clip = AudioSystem.getClip();
-	            clip.open(audioInputStream);
-	            clip.start();
-	            clip.loop(Clip.LOOP_CONTINUOUSLY);
-	            // If you want the sound to loop infinitely, then put: clip.loop(Clip.LOOP_CONTINUOUSLY); 
-	            // If you want to stop the sound, then use clip.stop();
-	        } catch (Exception ex) {
-	            ex.printStackTrace();
-	        }
-		    for (i = 0; i < MAX_PUYOS/2; i++) {
-	    		p[i][0].setY(Celula);
-	    		janela.adicionaImagem(p[i][0]);
-	    		janela.adicionaImagem(p[i][1]);
-	    		try {
-	    			Thread.sleep(1000);
-			    } 
-			    catch (InterruptedException e) {
-			 		System.out.println(e);
-			    }
-		    	for (j = 0; j < 2; j++) {   
-		    		p[i][j].setX(0);
-		    		p[i][0].setY(-Celula);
-		    		p[i][1].setY(-2*Celula);
-		    		p[i][j].setStatus("A");
-		    		p[i][j].setId(i*10+j);
-		    		p[i][j].link(p);
-			   }
+	    	sound.BackgroundSound();
+			for (i = 0; i < (MAX_PUYOS/2) - 1; i++) {
+				p[i][0].setY(Celula);
+				janela.adicionaImagem(p[i][0]); // Primeiro puyo-puyo em seguida
+				janela.adicionaImagem(p[i][1]);
+				
+				p[i+1][0].setY(Celula*2);
+				p[i+1][1].setY(Celula*3);
+				janela.adicionaImagem(p[i+1][0]);  // Segundo puyo-puyo em seguida
+				janela.adicionaImagem(p[i+1][1]);
+				try {
+					Thread.sleep(1000);
+				} 
+				catch (InterruptedException e) {
+					System.out.println(e);
+				}
+				for (j = 0; j < 2; j++) {   
+					p[i][j].setX(108);
+					if (j == 0) {
+						p[i][j].setY(-Celula);
+					}
+					else if (j == 1) {
+						p[i][j].setY(-2*Celula);
+					}
+					p[i][j].setStatus("A");
+					p[i][j].setId(i*10+j);
+					p[i][j].link(p);
+				}
 		    	janela.adicionaImagem(p[i][0]);
 		     	janela.adicionaImagem(p[i][1]);
 		     	p[i][0].metro.addActionListener(p[i][0]);
@@ -75,6 +72,8 @@ public class AppPuyo{
 			 		System.out.println(e);
 			    }
 		    	if (p[i][1].getGameOver() == true || p[i][0].getGameOver() == true) {
+		    		sound.GameOverSound();
+		    		JOptionPane.showMessageDialog(janela, "Voce Perdeu :(", "Boa sorte na proxima <3", JOptionPane.PLAIN_MESSAGE);
 		    		System.out.println("GAME OVER");
 		    		gameOver = true;
 		    		janela.GameOver();

@@ -16,7 +16,7 @@ public class Board extends JPanel{
 	//private static final long serialVersionUID = 1278136335268310294L;
 	String score;
 	int s = 0;
-	int layout = 0; //Layout 0 é quando !GameOver
+	int layout = 0; //Layout 0 ï¿½ quando !GameOver
 	
 	public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
@@ -28,7 +28,7 @@ public class Board extends JPanel{
 			Stroke stroke = new BasicStroke(4f);
 			((Graphics2D) g2).setStroke(stroke);
 			g2.drawLine(252, 0, 252, 700);
-			g2.drawLine(252, 72, 400, 72);
+			g2.drawLine(252, 216, 400, 216);
 			g2.setColor(Color.BLACK);
 			g2.setFont(new Font("serif", Font.BOLD, 20));
 				
