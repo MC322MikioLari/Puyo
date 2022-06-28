@@ -21,10 +21,10 @@ public class AppPuyo{
 	public static Keyboard keyboard = new Keyboard(metro);
 	public static Placar placar = new Placar();
 	public static JanelaImagem janela = new JanelaImagem(keyboard, placar);
-    public static Remove removePuyos = new Remove(p, metro, placar, janela);
+	public static Sound sound= new Sound();
+    public static Remove removePuyos = new Remove(p, metro, placar, janela, sound);
     public static DescePuyo descePuyo = new DescePuyo(p, metro);
     public static boolean gameOver = false;
-    public static Sound sound= new Sound();
     
 	public static void main(String[] args) {
 	    while (gameOver == false) {

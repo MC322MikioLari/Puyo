@@ -28,9 +28,20 @@ public class Sound {
 	        clipGameOver = AudioSystem.getClip();
 	        clipGameOver.open(gameOverAudio);
 	        clipGameOver.start();
-	        clipGameOver.loop(Clip.LOOP_CONTINUOUSLY);
 	    } catch (Exception ex) {
 	        ex.printStackTrace();
 	    }
+	}
+	public void ComboSound() {
+		clipBackground.stop();
+		try {
+	        AudioInputStream ComboAudio = AudioSystem.getAudioInputStream(AppPuyo.class.getResource("assets/explode.wav"));
+	        clipGameOver = AudioSystem.getClip();
+	        clipGameOver.open(ComboAudio);
+	        clipGameOver.start();
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }
+		clipBackground.start();
 	}
 }

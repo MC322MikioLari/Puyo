@@ -14,13 +14,15 @@ public class Remove implements ActionListener {
 	Puyo p[][];
 	Puyo visitados[], CoresIguais[];
 	Placar placar;
+	Sound sound;
 	JanelaImagem janela;
 	int n = 1;
 	
-	public Remove(Puyo p[][], Notifier metro, Placar placar, JanelaImagem janela) {
+	public Remove(Puyo p[][], Notifier metro, Placar placar, JanelaImagem janela, Sound sound) {
 		this.p = p;
 		this.placar = placar;
 		this.janela = janela;
+		this.sound = sound;
 		metro.addActionListener(this);
 	}
 	
@@ -79,7 +81,7 @@ public class Remove implements ActionListener {
 	public void EliminaPuyos(Puyo eliminados[], Puyo p[][]) {
 		for (int i = 0; eliminados[i] != null; i++) {
 			eliminados[i].setStatus("E");
-			
+			sound.ComboSound();
 			janela.panel.remove(eliminados[i]);
 			janela.panel.validate();
 			janela.panel.validate();
