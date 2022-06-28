@@ -31,6 +31,7 @@ public class AppPuyo{
 	    	sound.BackgroundSound();
 			for (i = 0; i < (MAX_PUYOS/2) - 1; i++) {
 				p[i][0].setY(Celula);
+				p[i][1].setY(0);
 				janela.adicionaImagem(p[i][0]); // Primeiro puyo-puyo em seguida
 				janela.adicionaImagem(p[i][1]);
 				
