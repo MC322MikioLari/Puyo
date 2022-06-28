@@ -10,15 +10,16 @@
 
 # Arquivo Executável do Jogo
 
-> Coloque aqui um link para download do arquivo `jar` ou equivalente para execução do seu jogo.
+> [link](https://github.com/MC322MikioLari/Puyo/blob/main/RunnablePuyoProject3.jar)
 
 # Slides do Projeto
 
 ## Slides da Prévia
-> [link](https://www.canva.com/design/DAFBKpJP6-U/I3DJP-M3G08Ff8unRmgwOw/view?utm_content=DAFBKpJP6-U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+> [ApresentaçãoPrévia](https://github.com/MC322MikioLari/Puyo/files/9002192/ApresentacaoPrevia.pdf)
 
 ## Slides da Apresentação Final
-> [link](https://www.canva.com/design/DAFE42wsu8I/cCOMiULW_cm2h4bK6S8Ttw/view?utm_content=DAFE42wsu8I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+> [ApresentaçãoFinal](https://user-images.githubusercontent.com/82288999/176224344-0c34703e-05b4-4ece-bcd6-b525b15c7ac1.mp4)
 
 # Diagramas
 
