@@ -159,7 +159,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
 			}
 			else {
 				this.setStatus("P");
-				//this.metro.stop();
+				this.metro.stop();
 				if (this.getY() == 0)
 					this.setGameOver();
 			}

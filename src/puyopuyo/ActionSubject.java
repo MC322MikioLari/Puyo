@@ -22,8 +22,3 @@ public abstract class ActionSubject {
       }
    }
 }
-
-
-/*if (al.getClass() == new Keyboard(null).getClass()) {
-        	 System.out.println("Adicionei");
-        	 //listenerArr.remove(al);*/

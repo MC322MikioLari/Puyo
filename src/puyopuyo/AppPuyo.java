@@ -15,11 +15,12 @@ public class AppPuyo{
 	public static Maker maker = new Maker();
 	public static int i, j;
 	public static Puyo[][] p = maker.makePuyos();
-	public static Notifier metro = new Notifier(1000, 10);
+	public static Notifier metro = Singleton.getInstance();
 	public static Keyboard keyboard = new Keyboard(metro);
 	public static Placar placar = new Placar();
 	public static JanelaImagem janela = new JanelaImagem(keyboard, placar);
     public static Remove removePuyos = new Remove(p, metro, placar, janela);
+    public static DescePuyo descePuyo = new DescePuyo(p, metro);
     static boolean gameOver = false;
     
 	public static void main(String[] args) {
@@ -58,7 +59,7 @@ public class AppPuyo{
 			    catch (InterruptedException e) {
 			 		System.out.println(e);
 			    }
-		    	if (p[i][1].getGameOver() == true) {
+		    	if (p[i][1].getGameOver() == true || p[i][0].getGameOver() == true) {
 		    		System.out.println("GAME OVER");
 		    		gameOver = true;
 		    		janela.GameOver();
