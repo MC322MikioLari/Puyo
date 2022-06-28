@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>PuyoPuyo</name>
-	<comment>Project PuyoPuyo created by Buildship.</comment>
+	<name>Puyo</name>
+	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
 		<buildCommand>
-			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<variableList>
-		<variable>
-			<name>assets</name>
-			<value>file:/C:/Users/g-mik/Desktop/Programming/GitHub/Trabalho%20Final/PuyoPuyo/assets</value>
-		</variable>
-	</variableList>
 </projectDescription>
