@@ -14,13 +14,15 @@ public class Remove implements ActionListener {
 	Puyo p[][];
 	Puyo visitados[], CoresIguais[];
 	Placar placar;
+	Sound sound;
 	JanelaImagem janela;
 	int n = 1;
 	
-	public Remove(Puyo p[][], Notifier metro, Placar placar, JanelaImagem janela) {
+	public Remove(Puyo p[][], Notifier metro, Placar placar, JanelaImagem janela, Sound sound) {
 		this.p = p;
 		this.placar = placar;
 		this.janela = janela;
+		this.sound = sound;
 		metro.addActionListener(this);
 	}
 	
@@ -52,7 +54,7 @@ public class Remove implements ActionListener {
 		for (w = 0; lista[w] != null; w++);
 		return w;
 	}
-	
+
 	public void findPuyos(Puyo p[][], int I, int J, int color) {
 		for(int i=0; i<MAX_PUYOS/2; i++) {
 			for(int j=0; j<2; j++) {
@@ -79,11 +81,7 @@ public class Remove implements ActionListener {
 	public void EliminaPuyos(Puyo eliminados[], Puyo p[][]) {
 		for (int i = 0; eliminados[i] != null; i++) {
 			eliminados[i].setStatus("E");
-			try {
-				Thread.sleep(400);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			sound.ComboSound();
 			janela.panel.remove(eliminados[i]);
 			janela.panel.validate();
 			janela.panel.validate();
@@ -114,54 +112,3 @@ public class Remove implements ActionListener {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-/*
-public void DescePuyo(Celula c, Puyo p[][]) {
-	int J = c.getJ();
-	int I = c.getI();
-	while (J >= 0) {
-		for(int i=0; i<MAX_PUYOS/2; i++) {
-			for(int j=0; j<2; j++) {
-					if (p[i][j].getStatus() != "E" && p[i][j].getStatus() != "D") {
-						if (p[i][j].getCelula().getI() == I && p[i][j].getCelula().getJ() == J-1) {
-							System.out.println("cor: " + p[i][j].getColor() + " I: " + p[i][j].getCelula().getI() + " J: " + p[i][j].getCelula().getJ() );
-							if (p[i][j].checkPuyos(p[i][j].getX(), p[i][j].getY() + Celula) == false) {
-								System.out.println("cor: " + p[i][j].getColor() + " I: " + p[i][j].getCelula().getI() + " J: " + p[i][j].getCelula().getJ() );
-								p[i][j].setY(p[i][j].getY() + Celula);
-								p[i][j].setLocation(p[i][j].getX(), p[i][j].getY());
-							}
-						}
-						J-=1;
-					}
-				}
-			}
-		}
-	}*/
-
-
-
-
-
-
-
-
-
-/*public void EsperaParar(Puyo eliminados[]) {
-		for (int i = 0; eliminados[i] != null; i++) {
-			if (eliminados[i].getStatus() != "P") {
-				if (eliminados[i].checkPuyos(eliminados[i].getX(), eliminados[i].getY() + Celula)) {
-					eliminados[i].setY(eliminados[i].getY() + Celula);
-					eliminados[i].setLocation(eliminados[i].getX(), eliminados[i].getY());
-				}
-				else
-					eliminados[i].setStatus("P");
-			}
-		}
-	}*/

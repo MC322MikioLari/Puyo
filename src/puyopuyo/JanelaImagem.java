@@ -4,9 +4,10 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.WindowEvent;
 
-import javax.swing.ImageIcon;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 public class JanelaImagem extends JFrame {
@@ -50,12 +51,16 @@ public class JanelaImagem extends JFrame {
    }
    
    public void GameOver() {
-	   this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-	   /*
-	   ImageIcon icon = new ImageIcon(DIRETORIO+"GameOver.jpg");
-	   panel.add(new JLabel(icon));
+	   panel.removeAll();
+	   panel.changeLayout(1);
 	   SwingUtilities.updateComponentTreeUI(panel);
-	   //this.pack();*/
+	   try {
+	 		Thread.sleep(3000);
+	    } 
+	    catch (InterruptedException e) {
+	 		System.out.println(e);
+	    }
+	   this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
    }
    
 }

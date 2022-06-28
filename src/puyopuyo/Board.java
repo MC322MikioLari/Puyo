@@ -10,9 +10,13 @@ import java.awt.Stroke;
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
-	//private static final long serialVersionUID = 1278136335268310294L;
+	final static int widthTotal = 400;
+	final static int widthWindow = 252;
+	final static int heightWindow = 468;
+	private static final long serialVersionUID = 1278136335268310294L;
 	String score;
 	int s = 0;
+	int layout = 0; //Layout 0 � quando !GameOver
 	
 	public static String DIRETORIO =
 	         AppPuyo.class.getResource(".").getPath();
@@ -34,5 +38,16 @@ public class Board extends JPanel{
 	public void ChangePlacar(int score) {
 		s += score;
 		this.validate();
+	}
+	public void changeLayout(int i) {
+		layout = i;
+	}
+	public void GameOver(Graphics g2) {
+		super.paintComponent(g2);
+		g2.setColor(Color.black);
+		g2.fillRect(0, 0, widthTotal, heightWindow);
+		g2.setColor(Color.white);
+		g2.setFont(new Font("serif", Font.BOLD, 20));
+		g2.drawString("GAME OVER", 125, heightWindow/2);
 	}
  }
