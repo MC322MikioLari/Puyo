@@ -18,7 +18,7 @@
 > [link](https://www.canva.com/design/DAFBKpJP6-U/I3DJP-M3G08Ff8unRmgwOw/view?utm_content=DAFBKpJP6-U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Slides da Apresentação Final
-> Coloque um link para os slides da apresentação final do projeto.
+> [link](https://www.canva.com/design/DAFE42wsu8I/cCOMiULW_cm2h4bK6S8Ttw/view?utm_content=DAFE42wsu8I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 # Diagramas
 
