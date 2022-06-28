@@ -1,5 +1,10 @@
 package puyopuyo;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+
 public class AppPuyo{
 	final static int MAX_PUYOS = 7*13;
 	final static int widthWindow = 252;
@@ -26,6 +31,19 @@ public class AppPuyo{
 	public static void main(String[] args) {
 	    
 	    while (gameOver == false) {
+	        try {
+	            AudioInputStream audioInputStream = 
+	            		AudioSystem.getAudioInputStream(AppPuyo.class.getResource("assets/backgroundMusic.wav"));
+	            Clip clip = AudioSystem.getClip();
+	            clip.open(audioInputStream);
+	            clip.start();
+	            // If you want the sound to loop infinitely, then put: clip.loop(Clip.LOOP_CONTINUOUSLY); 
+	            // If you want to stop the sound, then use clip.stop();
+	        } catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+	    	
+	    	
 		    for (i = 0; i < MAX_PUYOS/2; i++) {
 	    		p[i][0].setY(Celula);
 	    		janela.adicionaImagem(p[i][0]);
