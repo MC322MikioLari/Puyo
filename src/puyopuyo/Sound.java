@@ -33,7 +33,6 @@ public class Sound {
 	    }
 	}
 	public void ComboSound() {
-		clipBackground.stop();
 		try {
 	        AudioInputStream ComboAudio = AudioSystem.getAudioInputStream(AppPuyo.class.getResource("assets/explode.wav"));
 	        clipGameOver = AudioSystem.getClip();
