@@ -16,10 +16,10 @@
 
 ## Slides da Prévia
 
-> [link](https://www.canva.com/design/DAFBKpJP6-U/I3DJP-M3G08Ff8unRmgwOw/view?utm_content=DAFBKpJP6-U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+> [ApresentaçãoPrévia.pdf](https://github.com/MC322MikioLari/Puyo/files/9002192/ApresentacaoPrevia.pdf)
 
 ## Slides da Apresentação Final
-> [link](https://user-images.githubusercontent.com/82288999/176211576-65cf27e9-24ee-4a49-af1c-daa1e2b43a4e.mp4)
+> (https://user-images.githubusercontent.com/82288999/176211576-65cf27e9-24ee-4a49-af1c-daa1e2b43a4e.mp4)
 
 # Diagramas
 
