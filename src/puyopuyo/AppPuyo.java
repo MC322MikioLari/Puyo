@@ -1,8 +1,6 @@
 package puyopuyo;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.swing.JOptionPane;
 
 public class AppPuyo{
 	final static int MAX_PUYOS = 7*13;
@@ -25,22 +23,12 @@ public class AppPuyo{
 	public static JanelaImagem janela = new JanelaImagem(keyboard, placar);
     public static Remove removePuyos = new Remove(p, metro, placar, janela);
     public static DescePuyo descePuyo = new DescePuyo(p, metro);
-    static boolean gameOver = false;
+    public static boolean gameOver = false;
+    public static Sound sound= new Sound();
     
 	public static void main(String[] args) {
 	    while (gameOver == false) {
-	    	try {
-	            AudioInputStream audioInputStream = 
-	            		AudioSystem.getAudioInputStream(AppPuyo.class.getResource("assets/backgroundMusic.wav"));
-	            Clip clip = AudioSystem.getClip();
-	            clip.open(audioInputStream);
-	            clip.start();
-	            clip.loop(Clip.LOOP_CONTINUOUSLY);
-	            // If you want the sound to loop infinitely, then put: clip.loop(Clip.LOOP_CONTINUOUSLY); 
-	            // If you want to stop the sound, then use clip.stop();
-	        } catch (Exception ex) {
-	            ex.printStackTrace();
-	        }
+	    	sound.BackgroundSound();
 		    for (i = 0; i < MAX_PUYOS/2; i++) {
 	    		p[i][0].setY(Celula);
 	    		janela.adicionaImagem(p[i][0]);
@@ -75,6 +63,8 @@ public class AppPuyo{
 			 		System.out.println(e);
 			    }
 		    	if (p[i][1].getGameOver() == true || p[i][0].getGameOver() == true) {
+		    		sound.GameOverSound();
+		    		JOptionPane.showMessageDialog(janela, "Você Perdeu :(", "Boa sorte na próxima <3", JOptionPane.PLAIN_MESSAGE);
 		    		System.out.println("GAME OVER");
 		    		gameOver = true;
 		    		janela.GameOver();

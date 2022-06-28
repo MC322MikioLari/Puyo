@@ -52,11 +52,7 @@ public class Remove implements ActionListener {
 		for (w = 0; lista[w] != null; w++);
 		return w;
 	}
-	/*
-	public void setNull(Puyo lista[]) {
-		for (w = 0; lista[w] != null; w++);
-		
-	}*/
+
 	public void findPuyos(Puyo p[][], int I, int J, int color) {
 		for(int i=0; i<MAX_PUYOS/2; i++) {
 			for(int j=0; j<2; j++) {
@@ -103,8 +99,6 @@ public class Remove implements ActionListener {
 			for(int j=0; j<2; j++) {
 				CoresIguais = new Puyo [20];
 				visitados = new Puyo [20];
-				System.out.println(tam(CoresIguais));
-				System.out.println(tam(visitados));
 				if ((p[i][j].getStatus() == "P") && p[i][j].getPuyosProx()[0] != null)
 					SearchSameColor(p[i][j], CoresIguais);
 				if (tam(CoresIguais) >= 4) {
