@@ -19,7 +19,7 @@
 > [ApresentaçãoPrévia](https://github.com/MC322MikioLari/Puyo/files/9002192/ApresentacaoPrevia.pdf)
 
 ## Slides da Apresentação Final
-> [ApresentaçãoFinal](https://user-images.githubusercontent.com/82288999/176211576-65cf27e9-24ee-4a49-af1c-daa1e2b43a4e.mp4)
+> [ApresentaçãoFinal](https://user-images.githubusercontent.com/82288999/176224344-0c34703e-05b4-4ece-bcd6-b525b15c7ac1.mp4)
 
 # Diagramas
 
