@@ -2,21 +2,20 @@ package puyopuyo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Puyo extends JLabel implements ActionListener{ //,Runnable {
-   //private static final long serialVersionUID = 4310667556938403035L;
 
-   private int x, y, angulo, color, event, id;
-   private String status;
-   private Puyo PuyosProx[];
-   Puyo P[][] ;
-   Notifier metro;
-   private Celula celula;
-   private Boolean gameOver;
+	private static final long serialVersionUID = 4735320831576421354L;
+	private int x, y, angulo, color, event, id;
+    private String status;
+    private Puyo PuyosProx[];
+    Puyo P[][] ;
+    Notifier metro;
+    private Celula celula;
+    private Boolean gameOver;
    
    final static int MAX_PUYOS = 7*13;
 	

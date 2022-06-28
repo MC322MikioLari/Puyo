@@ -10,6 +10,8 @@ import java.awt.Stroke;
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
+
+	private static final long serialVersionUID = -7959998185653748852L;
 	final static int widthTotal = 400;
 	final static int widthWindow = 252;
 	final static int heightWindow = 468;
@@ -28,7 +30,7 @@ public class Board extends JPanel{
 			Stroke stroke = new BasicStroke(4f);
 			((Graphics2D) g2).setStroke(stroke);
 			g2.drawLine(252, 0, 252, 700);
-			g2.drawLine(252, 216, 400, 216);
+			g2.drawLine(252, 144, 400, 144);
 			g2.setColor(Color.BLACK);
 			g2.setFont(new Font("serif", Font.BOLD, 20));
 				

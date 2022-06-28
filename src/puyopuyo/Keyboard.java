@@ -7,9 +7,9 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 
-@SuppressWarnings("serial")
 public class Keyboard extends JPanel implements ActionListener{
 	
+	private static final long serialVersionUID = -6012079279886719200L;
 	final static int widthWindow = 252;
 	final static int heightWindow = 468;
 	final static int WIDTH = widthWindow/7;

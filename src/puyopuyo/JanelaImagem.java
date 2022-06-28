@@ -4,14 +4,13 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.WindowEvent;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class JanelaImagem extends JFrame {
-   //private static final long serialVersionUID = 1278136335268310294L;
+
+	private static final long serialVersionUID = -597477301770719792L;
+
    public Container painel;
    
    final static int MAX_PUYOS = 6*13;
