@@ -6,7 +6,7 @@
 
 # Equipe
 * `<Larissa Ayumi Okabayashi>` - `<247220>`
-* `<Gabriel Mikio>` - `<248295>`
+* `<Gabriel Mikio Alves Shimizu>` - `<248295>`
 
 # Arquivo Executável do Jogo
 
