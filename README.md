@@ -10,7 +10,7 @@
 
 # Arquivo Executável do Jogo
 
-> Coloque aqui um link para download do arquivo `jar` ou equivalente para execução do seu jogo.
+> [link](https://github.com/MC322MikioLari/Puyo/blob/main/RunnablePuyoProject3.jar)
 
 # Slides do Projeto
 
