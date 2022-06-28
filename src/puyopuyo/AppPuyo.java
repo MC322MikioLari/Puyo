@@ -91,7 +91,7 @@ public class AppPuyo{
 			    				//AudioSystem.getAudioInputStream(AppPuyo.class.getResource("assets/gameOver.wav"));
 			            //Clip clipGameOver= AudioSystem.getClip();
 			            //clipGameOver.open(gameOverAudio);
-			    		JOptionPane.showMessageDialog(janela, "Você Perdeu :(", "Boa sorte na próxima <3", JOptionPane.PLAIN_MESSAGE);
+			    		JOptionPane.showMessageDialog(janela, "Vocï¿½ Perdeu :(", "Boa sorte na prï¿½xima <3", JOptionPane.PLAIN_MESSAGE);
 			    					    		
 			    		System.out.println("GAME OVER");
 			    		gameOver = true;
