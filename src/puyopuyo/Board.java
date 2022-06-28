@@ -23,7 +23,7 @@ public class Board extends JPanel{
 		Stroke stroke = new BasicStroke(4f);
 		((Graphics2D) g2).setStroke(stroke);
 		g2.drawLine(252, 0, 252, 700);
-		g2.drawLine(252, 72, 400, 72);
+		g2.drawLine(252, 216, 400, 216);
 		g2.setColor(Color.BLACK);
 		g2.setFont(new Font("serif", Font.BOLD, 20));
 			

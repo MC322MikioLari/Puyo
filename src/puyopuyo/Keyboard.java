@@ -86,23 +86,23 @@ public class Keyboard extends JPanel implements ActionListener{
 				}
 			}
 		}
-		else if (event == KeyEvent.VK_UP) { // Girando
-			if (p1.getAngulo() == 0) {
+		else if (event == KeyEvent.VK_UP) { // Girando no sentido anti horario
+			if (p1.getAngulo() == 0 && p2.getX() != 0) {
 				p1.setX(p1.getX() - Celula);
 				p1.setY(p2.getY());
-				p1.setAngulo(45);
+				p1.setAngulo(90);
 			}
-			else if (p1.getAngulo() == 45) {
+			else if (p1.getAngulo() == 90) {
 				p1.setX(p1.getX() + Celula);
 				p1.setY(p1.getY() - Celula);
-				p1.setAngulo(90);
+				p1.setAngulo(180);
 			 }
-			 else if (p1.getAngulo() == 90) {
+			 else if (p1.getAngulo() == 180 && p2.getX() != widthWindow) {
 				p1.setX(p1.getX() + Celula);
 				p1.setY(p1.getY() + Celula);
-			 	p1.setAngulo(135);
+			 	p1.setAngulo(270);
 			 }
-			 else if (p1.getAngulo() == 135) {
+			 else if (p1.getAngulo() == 270) {
 			 	p1.setX(p1.getX() - Celula);
 				p1.setY(p1.getY() + Celula);
 			 	p1.setAngulo(0);

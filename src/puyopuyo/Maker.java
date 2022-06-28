@@ -31,19 +31,19 @@ public class Maker {
 				int color = java.lang.Math.abs(rand.nextInt()%4);
 				switch(color)  {
 					case Puyo.PURPLE:
-					    puyos[i][j] = new Puyo(DIRETORIO+"imagens/purple.png");
+					    puyos[i][j] = new Puyo(DIRETORIO+"assets/purple.png");
 					    puyos[i][j].setColor(Puyo.PURPLE);
 					    break;
 					case Puyo.RED:
-						puyos[i][j] = new Puyo(DIRETORIO+"imagens/red.png");
+						puyos[i][j] = new Puyo(DIRETORIO+"assets/red.png");
 					    puyos[i][j].setColor(Puyo.RED);
 					    break;
 					case Puyo.YELLOW:
-						puyos[i][j] = new Puyo(DIRETORIO+"imagens/yellow.png");
+						puyos[i][j] = new Puyo(DIRETORIO+"assets/yellow.png");
 					    puyos[i][j].setColor(Puyo.YELLOW);
 					    break;
 					case Puyo.GREEN:
-						puyos[i][j] = new Puyo(DIRETORIO+"imagens/green.png");
+						puyos[i][j] = new Puyo(DIRETORIO+"assets/green.png");
 					    puyos[i][j].setColor(Puyo.GREEN);
 					    break;
 				}
