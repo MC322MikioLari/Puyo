@@ -19,9 +19,7 @@ public class Board extends JPanel{
 	String score;
 	int s = 0;
 	int layout = 0; //Layout 0 � quando !GameOver
-	
-	public static String DIRETORIO =
-	         AppPuyo.class.getResource(".").getPath();
+
 	public void paintComponent(Graphics g2){
 		super.paintComponent(g2);
 		if (layout == 0) {
