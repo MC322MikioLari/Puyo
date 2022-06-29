@@ -10,7 +10,7 @@
 
 # Arquivo Executável do Jogo
 
-> [link](https://github.com/MC322MikioLari/Puyo/blob/main/PuyoPuyo.jar)
+> [link](https://github.com/MC322MikioLari/Puyo/blob/main/RunnablePuyo.jar)
 
 # Slides do Projeto
 
