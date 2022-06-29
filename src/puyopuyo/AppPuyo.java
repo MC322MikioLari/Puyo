@@ -10,10 +10,6 @@ public class AppPuyo{
 	final static int HEIGHT = widthWindow/7;
 	final static int Celula = widthWindow/7;
 	
-	// tecnica para identificar o diretorio em que a classe esta
-	public static String DIRETORIO =
-         AppPuyo.class.getResource(".").getPath();
-	
 	public static Maker maker = new Maker();
 	public static int i, j;
 	public static Puyo[][] p = maker.makePuyos();

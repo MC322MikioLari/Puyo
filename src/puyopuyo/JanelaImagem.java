@@ -28,9 +28,6 @@ public class JanelaImagem extends JFrame {
    
    int i, j;
    
-   public static String DIRETORIO =
-	         AppPuyo.class.getResource(".").getPath();
-   
    public JanelaImagem(Keyboard keyboard, Placar placar) {
       super();
       setSize(widthTotal, heightWindow);
