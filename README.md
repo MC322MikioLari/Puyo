@@ -25,23 +25,23 @@
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo
-![image](https://user-images.githubusercontent.com/82288999/176044745-79eb9d70-346f-4411-9e80-c45aa416bffd.png)
+![image](https://user-images.githubusercontent.com/82288999/177216413-094807bb-bd31-4048-a2dd-385eab2e716d.png)
 
 ## Relatório de Evolução
 
-> Relatório de evolução, descrevendo as evoluções do design do projeto, dificuldades enfrentadas, mudanças de rumo, melhorias e lições aprendidas. Referências aos diagramas e recortes de mudanças são bem-vindos.
+Inicialmente, a dupla se programou para separar o projeto em duas entregas, onde na primeira, contemplava-se a parte fundamental e mais básica do jogo, isto é, funcionalidades que não poderiam faltar, tais como: Implementar interface gráfica, função que cria os puyo-puyos, movimentos, controles do jogo, entre outros. A segunda entrega seria para implementar atributos adicionais, de modo a deixar o jogo mais complexo, tais como ser multiplayer e adicionar puyo-puyos especiais (um que atrapalha e um que aumenta o score). Contudo, devido a dificuldades do grupo, principalmente relacionada a implementação da interface gráfica, a segunda entrega não foi realizada. 
+
+Sobre a interface gráfica a dupla escolheu utilizar bibliotecas mais antigas, tais como : JavaSwing e JPanel, contudo o grupo percebeu durante o processo de desenvolvimento do jogo, que essa decisão não foi muito inteligente, isso porque essas bibliotecas por serem mais antigas que outras como a libgdx, se tornam menos flexíveis, com menos funcionalidades possíveis, dificultando o processo de criação da interface, e tornando-a mais simples do que ela poderia ser. Logo, uma possível melhoria seria utilizar bibliotecas mais recentes para produzir a interface.
+
+O grupo percebeu no meio do projeto uma problemática de que no jogo há vários processos acontecendo ao mesmo tempo (puyo caindo, executando o comando do teclado, checando se há puyos para serem eliminados). Por isso, a equipe supôs que teria que ser implementado threads, de modo a permitir a ocorrência de eventos em paralelo. No entanto, o conhecimento do design pattern observer resolveu esse problema, dado que ele adiciona Listener (que implementam a interface ActionListener) em um array e vai realizando cada um deles na função notify, os processos não ocorrem de maneira paralela, mais a velocidade é o bastante para o jogo funcionar.
+
+Além disso, como a proposta anterior era fazer um jogo mais complexo, que desse mais possibilidade de aplicar os conceitos de Programação orientada a objetos, a arquitetura inicial era que o Puyo herdasse a classe Componente, assim como na proposta inicial tinha mais do que um tipo de Puyo para ser implementado, essa decisão ia ser adequada. Contudo, a existência no jogo atual de só um tipo de Puyo tornou a arquitetura citada defasada, por isso a classe Componentes não foi usada no final. 
+
 
 # Destaques de Código
+> Busca Recursiva de Puyos de mesma cor a fim de eliminar puyos conectados em quantidade >= 4
 
-> Escolha trechos relevantes e/ou de destaque do seu código. Apresente um recorte (você pode usar reticências para remover partes menos importantes). Veja como foi usado o highlight de Java para o código.
-
-~~~java
-// Recorte do seu código
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
-}
-~~~
+![image](https://user-images.githubusercontent.com/82288999/177214914-8f03264f-2959-48ac-a7f1-d89f5ecf9ac3.png)
 
 # Destaques de Orientação a Objetos
 > Destaque partes do código em que a orientação a objetos foi aplicada para aprimorar seu código. Por exemplo, o uso de polimorfismo para ajustar ações conforme o contexto. Sugestão de estrutura:
@@ -50,21 +50,25 @@ public void algoInteressante(…) {
 > Sugere-se um diagrama de classes para o destaque, mas podem ser usados outros tipos de diagrama, conforme a necessidade.
 
 ## Código do Destaque OO
-~~~java
-// Recorte do código do pattern seguindo as mesmas diretrizes de outros destaques
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
-}
-~~~
+> Sobrecarga de métodos para adicionar ou um elemento em um array, ou um array em array
+
+![image](https://user-images.githubusercontent.com/82288999/177216078-822c0a18-6ce3-4dce-9f4f-a2bb7af9c050.png)
+
+> Uso de polimorfismo ao sobrescrever método (paintComponent) da super-classe 
+
+![image](https://user-images.githubusercontent.com/82288999/177215776-8b044953-26d1-45ee-b300-4c8fa9828c6a.png)
+
+![image](https://user-images.githubusercontent.com/82288999/177215909-09981611-1248-4d75-85b3-b1519cacb63e.png)
 
 # Destaques de Pattern
 > Destaque de patterns adotados pela equipe. Sugestão de estrutura:
 
 ## Diagrama do Pattern
+
 > Diagrama do pattern dentro do contexto da aplicação.
 
 ## Código do Pattern
+
 ~~~java
 // Recorte do código do pattern seguindo as mesmas diretrizes de outros destaques
 public void algoInteressante(…) {
@@ -82,16 +86,11 @@ public void algoInteressante(…) {
 # Plano de Exceções
 
 ## Diagrama da hierarquia de exceções
-> Elabore um diagrama com a hierarquia de exceções como detalhado a seguir.
 
-![Hierarquia Exceções](exception-hierarchy.png)
+![Exception](https://user-images.githubusercontent.com/82288999/177318851-35d5d5fb-4730-435d-aa03-46eda1f9d34b.png)
 
 ## Descrição das classes de exceção
 
-> Monte uma tabela descritiva seguindo o exemplo:
+![Exception2](https://user-images.githubusercontent.com/82288999/177318572-47223ca7-13e4-4f6c-922d-19d3c4ceb3d9.png)
 
-Classe | Descrição
------ | -----
-DivisaoInvalida | Engloba todas as exceções de divisões não aceitas.
-DivisaoInutil | Indica que a divisão por 1 é inútil.
-DivisaoNaoInteira | Indica uma divisão não inteira.
+
