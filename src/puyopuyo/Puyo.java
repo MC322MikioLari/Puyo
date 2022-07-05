@@ -2,6 +2,7 @@ package puyopuyo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -31,7 +32,7 @@ public class Puyo extends JLabel implements ActionListener{ //,Runnable {
    final static int HEIGHT = widthWindow/7;
    final static int Celula = widthWindow/7;
    
-   public Puyo(String arquivoImagem) {
+   public Puyo(URL arquivoImagem) {
       super(new ImageIcon(arquivoImagem));
       setSize(WIDTH, HEIGHT);
       this.id = 0;
