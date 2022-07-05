@@ -31,8 +31,8 @@ public class AppPuyo{
 				janela.adicionaImagem(p[i][0]); // Primeiro puyo-puyo em seguida
 				janela.adicionaImagem(p[i][1]);
 				
-				p[i+1][0].setY(Celula*2);
-				p[i+1][1].setY(Celula*3);
+				p[i+1][0].setY(Celula*3);
+				p[i+1][1].setY(Celula*2);
 				janela.adicionaImagem(p[i+1][0]);  // Segundo puyo-puyo em seguida
 				janela.adicionaImagem(p[i+1][1]);
 				try {

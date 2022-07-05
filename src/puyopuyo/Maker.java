@@ -7,8 +7,7 @@ public class Maker {
 	int i,j;
 	private Puyo puyos[][] = new Puyo[MAX_PUYOS][2];
 	
-	public static String DIRETORIO =
-	         "/C:/Users/edusi/eclipse-workspace/Puyo/bin/puyopuyo/";
+	public static String DIRETORIO = AppPuyo.class.getResource(".").getFile();
 	
 	final static int MAX_PUYOS = 7*13;
 		
