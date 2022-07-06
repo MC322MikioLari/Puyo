@@ -41,24 +41,79 @@ Além disso, como a proposta anterior era fazer um jogo mais complexo, que desse
 # Destaques de Código
 > Busca Recursiva de Puyos de mesma cor a fim de eliminar puyos conectados em quantidade >= 4
 
-![image](https://user-images.githubusercontent.com/82288999/177214914-8f03264f-2959-48ac-a7f1-d89f5ecf9ac3.png)
+~~~java
+public void SearchSameColor(Puyo P, Puyo CoresIguais[]) {
+		add(visitados, P);
+		add(CoresIguais,P.getPuyosProx());
+		for (int w = 0; P.getPuyosProx()[w] != null; w++) { //Acessando a lista de PuyosProx do puyo
+			if (P.getPuyosProx()[w].getPuyosProx()[0] != null && (P.getStatus() == "P") && !PuyoInList(P.getPuyosProx()[w], visitados))//Acessando a lista de PuyosProx do puyo que estava dentro da lista do primeiro
+				SearchSameColor(P.getPuyosProx()[w], CoresIguais);	
+		}
+	}
+~~~
 
 # Destaques de Orientação a Objetos
-> Destaque partes do código em que a orientação a objetos foi aplicada para aprimorar seu código. Por exemplo, o uso de polimorfismo para ajustar ações conforme o contexto. Sugestão de estrutura:
 
-## Diagrama de Classes usada no destaque OO:
-> Sugere-se um diagrama de classes para o destaque, mas podem ser usados outros tipos de diagrama, conforme a necessidade.
-
-## Código do Destaque OO
-> Sobrecarga de métodos para adicionar ou um elemento em um array, ou um array em array
-
-![image](https://user-images.githubusercontent.com/82288999/177216078-822c0a18-6ce3-4dce-9f4f-a2bb7af9c050.png)
-
+## Diagrama de Classes usada no primeiro destaque OO:
 > Uso de polimorfismo ao sobrescrever método (paintComponent) da super-classe 
 
-![image](https://user-images.githubusercontent.com/82288999/177215776-8b044953-26d1-45ee-b300-4c8fa9828c6a.png)
+![Diagrama](https://user-images.githubusercontent.com/82288999/177548219-1263c1b4-1485-4d2a-bfff-94fe55d5734f.png)
 
-![image](https://user-images.githubusercontent.com/82288999/177215909-09981611-1248-4d75-85b3-b1519cacb63e.png)
+## Código do primeiro Destaque OO
+
+~~~java
+public class Board extends JPanel{
+~~~
+~~~java
+public void paintComponent(Graphics g2){
+   super.paintComponent(g2);
+~~~
+
+## Diagrama de Classes usada no segundo destaque OO:
+> Sobrecarga de métodos para adicionar ou um elemento em um array, ou um array em array
+
+![Diagrama](https://user-images.githubusercontent.com/82288999/177550623-3a5bd8de-b935-4b68-83fb-87e61195d9ae.png)
+
+## Código do segundo Destaque OO
+
+~~~java
+	public void add(Puyo lista[], Puyo p[]) {
+		int v, w = tam(lista);
+		for (v = 0; p[v] != null; v++) {
+			if (!PuyoInList(p[v], lista)) {
+				lista[w] = p[v];
+				w++;
+			}
+		}
+	}
+	
+	public void add(Puyo lista[], Puyo p) {
+		int w = tam(lista);
+		lista[w] = p;
+	}
+~~~
+
+## Diagrama de Classes usada no terceiro destaque OO:
+> Classe DescePuyo implementando interface actionListener e os métodos associados a ela
+
+![Diagrama](https://user-images.githubusercontent.com/82288999/177552585-86d064ec-0050-4c7e-8dae-cff974bede1d.png)
+
+## Código do terceiro Destaque OO
+~~~java
+public class DescePuyo implements ActionListener {
+~~~
+~~~java
+public void actionPerformed(ActionEvent e) {
+		for(int i=0; i<MAX_PUYOS/2; i++) {
+			for(int j=0; j<2; j++) {
+				if (p[i][j].getStatus() == "P" &&  p[i][j].getY() <= heightWindow && p[i][j].checkPuyos(p[i][j].getX(), p[i][j].getY() + Celula) == false) {
+					p[i][j].setY(p[i][j].getY() + Celula);
+					p[i][j].setLocation(p[i][j].getX(), p[i][j].getY());
+				}
+			}
+		}
+	}
+~~~
 
 # Destaques de Pattern
 > Destaque de patterns adotados pela equipe. Sugestão de estrutura:
