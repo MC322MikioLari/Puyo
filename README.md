@@ -39,7 +39,7 @@ Além disso, como a proposta anterior era fazer um jogo mais complexo, que desse
 
 
 # Destaques de Código
-> Busca Recursiva de Puyos de mesma cor a fim de eliminar puyos conectados em quantidade >= 4
+Busca Recursiva de Puyos de mesma cor a fim de eliminar puyos conectados em quantidade >= 4
 
 ~~~java
 public void SearchSameColor(Puyo P, Puyo CoresIguais[]) {
@@ -55,7 +55,7 @@ public void SearchSameColor(Puyo P, Puyo CoresIguais[]) {
 # Destaques de Orientação a Objetos
 
 ## Diagrama de Classes usada no primeiro destaque OO:
-> Uso de polimorfismo ao sobrescrever método (paintComponent) da super-classe 
+Uso de polimorfismo ao sobrescrever método (paintComponent) da super-classe 
 
 ![Diagrama](https://user-images.githubusercontent.com/82288999/177548219-1263c1b4-1485-4d2a-bfff-94fe55d5734f.png)
 
@@ -70,7 +70,7 @@ public void paintComponent(Graphics g2){
 ~~~
 
 ## Diagrama de Classes usada no segundo destaque OO:
-> Sobrecarga de métodos para adicionar ou um elemento em um array, ou um array em array
+Sobrecarga de métodos para adicionar ou um elemento em um array, ou um array em array
 
 ![Diagrama](https://user-images.githubusercontent.com/82288999/177550623-3a5bd8de-b935-4b68-83fb-87e61195d9ae.png)
 
@@ -94,7 +94,7 @@ public void paintComponent(Graphics g2){
 ~~~
 
 ## Diagrama de Classes usada no terceiro destaque OO:
-> Classe DescePuyo implementando interface actionListener e os métodos associados a ela
+Classe DescePuyo implementando interface actionListener e os métodos associados a ela
 
 ![Diagrama](https://user-images.githubusercontent.com/82288999/177552585-86d064ec-0050-4c7e-8dae-cff974bede1d.png)
 
@@ -116,36 +116,104 @@ public void actionPerformed(ActionEvent e) {
 ~~~
 
 # Destaques de Pattern
-> Destaque de patterns adotados pela equipe. Sugestão de estrutura:
+Action Listener e Singleton
 
-## Diagrama do Pattern
+## Observer
 
-> Diagrama do pattern dentro do contexto da aplicação.
+O Observer é um padrão de projeto comportamental que permite que você defina um mecanismo de assinatura para notificar múltiplos objetos sobre quaisquer eventos que aconteçam com o objeto que eles estão observando.
 
-## Código do Pattern
+### Diagrama do Pattern: Observer
 
+![Observer](https://user-images.githubusercontent.com/84105147/177977771-2e4089a9-adeb-4485-a823-8b44e70e429a.png)
+
+
+### Código do Pattern: Observer
+Classe "ActionSubject" responsável por definir o Array de "assinantes", assim como o método responsável por notificá-los em caso de alguma ação percebida.
 ~~~java
-// Recorte do código do pattern seguindo as mesmas diretrizes de outros destaques
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
+public abstract class ActionSubject {
+	final static ArrayList<ActionListener> listenerArr =
+         new ArrayList<ActionListener>(); 
+  
+   public void addActionListener(ActionListener listener) {
+	  listenerArr.add(listener);
+   }
+   
+   public void removeActionListener(ActionListener listener) {
+      listenerArr.remove(listener);
+   }
+   
+   public void notify(ActionEvent event) {
+      for (ActionListener al: listenerArr) {
+         al.actionPerformed(event);
+      }
+   }
 }
 ~~~
 
-> Explicação de como o pattern foi adotado e quais suas vantagens, referenciando o diagrama.
+Classe "Notifier" responsável por herdar os métodos da classe "Action Subject" e de fato definir o início e parada do "Timer", componente importantíssimo para o controle e desenvolvimento do jogo.
+
+~~~java
+public class Notifier extends ActionSubject implements ActionListener  {
+   private Timer metro;
+   private int quantidade, corrente;
+	.
+	.
+	.
+   
+   public void start() {
+      metro.start();
+   }
+    
+   public void stop() {
+      metro.stop();
+   }
+    
+   public void actionPerformed(ActionEvent event) {
+      corrente++;
+      if (corrente >= quantidade)
+         stop();
+      notify(event);
+   }
+}
+~~~
+
+Um exemplo de uma das várias classs as quais implementam o design pattern Observer, sobreescrevendo o método "ActionPerformed"; no caso, a classe Keyboard descrevendo o que seria a sua "ação performada" a ser avisada ao Notifier.
+
+~~~java
+public class Keyboard extends JPanel implements ActionListener{
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (event == KeyEvent.VK_RIGHT) { //Virando para direita
+			if (p1.getX() + Celula <= widthWindow-WIDTH && p2.getX() + Celula <= widthWindow-WIDTH) {
+				if ((p1.checkPuyos(p1.getX() + Celula, p1.getY()) == false) && (p2.checkPuyos(p2.getX() + Celula, p2.getY()) == false)) {
+					p1.setX(p1.getX() + Celula);
+					p2.setX(p2.getX() + Celula);
+					event = 0;
+				}
+			}
+		}
+		.
+		.
+		.
+	}
+}
+~~~
+
+## Singleton
+
+O Singleton é um padrão de projeto criacional que permite a você garantir que uma classe tenha apenas uma instância, enquanto provê um ponto de acesso global para essa instância.
+
+### Código do Pattern: Singleton
+
+![SingletonINstance](https://user-images.githubusercontent.com/84105147/177983102-2d59d3b8-ceed-428c-8dc7-46d0b0c5dff8.png)
+
 
 # Conclusões e Trabalhos Futuros
 
-> Apresente aqui as conclusões do projeto e propostas de trabalho futuro. Esta é a oportunidade em que você pode indicar melhorias no projeto a partir de lições aprendidas e conhecimentos adquiridos durante a realização do projeto, mas que não puderam ser implementadas por questões de tempo. Por exemplo, há design patterns aprendidos no final do curso que provavelmente não puderam ser implementados no jogo -- este é o espaço onde você pode apresentar como aplicaria o pattern no futuro para melhorar o jogo.
+Concluímos sobre como realmente usamos na prática, em projetos reais, os conceitos de Orientação a Objeto, e como eles são valiosos ao se montar um código robusto e escalável. Percebemos também, principalmente (e na pele), a importância dos FrameWorks, tais como o citado anteriormente LibGDX, pois nenhum dos 2 membros da dupla haviam tido contato com Frameworks anteriormente. É notável o quão limitados e sujeitos a diversos erros facilmente evitáveis nós nos tornanmos e nos colocamos, utilizando bibliotecas mais antigas de interface gráfica. 
 
-# Plano de Exceções
+Possíveis melhorias para o jogo são, em especial: uma mudança para uma interface gráfica mais moderna e robusta; a implementação de Exception Handling para lidar com a importação de arquivos de mídia tais como imagens e sons; o incremento de mais componentes, como os puyo-puyos de obstáculo (os quais atrapalham a se criar o combo/conexão das peças) e os puyo-puyos de bônus (os quais provêm pontos bônus ao serem consumidos juntamente a um combo); a adição da feature de multiplayer, seja contra uma segunda pessoa real, ou contra uma IA simples.
 
-## Diagrama da hierarquia de exceções
+Além das melhorias no código, aprendemos também sobre melhorias no ato de se apresentar o projeto; através dos fatores pontuados pela banca no momento de apresentação do jogo em sala, como: evitar o uso de vídeo; focar mais nos pontos de destaque do projeto e em como a Orientação a Objeto se relaciona com ele, e não pontos de algoritmos recorrentes.
 
-![Exception](https://user-images.githubusercontent.com/82288999/177318851-35d5d5fb-4730-435d-aa03-46eda1f9d34b.png)
-
-## Descrição das classes de exceção
-
-![Exception2](https://user-images.githubusercontent.com/82288999/177318572-47223ca7-13e4-4f6c-922d-19d3c4ceb3d9.png)
-
-
+Apesar de todo o insumo que tivemos sobre melhorias na nossa apresentação e projeto como um todo, e das dificuldades apresentadas ao longo da criação do código; ficamos felizes ao conseguir entregar um jogo funcionável e fechado, e temos certeza de que a experiência trazida deste primeiro projeto nos ajudará em muito nos seguintes, seja no âmbito acadêmico ou profissional. 
