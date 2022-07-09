@@ -116,11 +116,11 @@ public void actionPerformed(ActionEvent e) {
 ~~~
 
 # Destaques de Pattern
-Action Listener e Singleton
+Percebemos que, para o escopo de nosso projeto, precisávamos de dois design patterns chave: Observer - para o monitoramento do estado dos componentes do jogo e subsequente notificação para o resto do sistema, se tratando da movimentação dos puyo-puyos e comandos do usuário - e Singleton - para nos assegurarmos de que determinadas objetos possuam apenas 1 instância em tempo de execução, mas uma referência global; no caso, para a Classe Notifier.
 
 ## Observer
 
-O Observer é um padrão de projeto comportamental que permite que você defina um mecanismo de assinatura para notificar múltiplos objetos sobre quaisquer eventos que aconteçam com o objeto que eles estão observando.
+O Observer é um padrão de projeto comportamental que permite que você defina um mecanismo de assinatura para notificar múltiplos objetos sobre quaisquer eventos que aconteçam com o objeto que eles estão observando; estratégia essencial para o nosso jogo, visto que era necessária uma forma de monitoramento dos vários estados e alterações no jogo para que determinados componentes fossem avisados.
 
 ### Diagrama do Pattern: Observer
 
@@ -201,7 +201,7 @@ public class Keyboard extends JPanel implements ActionListener{
 
 ## Singleton
 
-O Singleton é um padrão de projeto criacional que permite a você garantir que uma classe tenha apenas uma instância, enquanto provê um ponto de acesso global para essa instância.
+O Singleton é um padrão de projeto criacional que permite a você garantir que uma classe tenha apenas uma instância, enquanto provê um ponto de acesso global para essa instância, importantíssimo para a execução do design pattern Observer com o objeto "Notifier" e suas várais referências em diversos outros objetos do sistema, mas precisando que apenas 1 instância existisse ao mesmo tempo.
 
 ### Código do Pattern: Singleton
 
